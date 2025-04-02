@@ -15,3 +15,14 @@ window.blit(image, (0, 0))
 pygame.display.flip()
 
 input()
+
+#computer message functions
+
+
+def send_message(user_window, sprite):
+
+    pass
+
+def click_button(button):
+
+    pass

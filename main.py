@@ -1,7 +1,9 @@
 import pygame
 pygame.init()
 
-# Can you lock in,
+MONITOR_INFO = pygame.display.Info()
 
-def test():
-    pass
+MONITOR_HEIGHT = MONITOR_INFO.current_h
+MONITOR_WIDTH = MONITOR_INFO.current_w
+
+

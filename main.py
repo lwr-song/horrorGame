@@ -1,17 +1,20 @@
 import pygame
+import sys
 pygame.init()
 
 # This is so that if you get rid of New Piskel.png the game crashes
-pygame.image.load("New Piskel.png")
+guy = pygame.image.load("New Piskel.png")
+guy = pygame.transform.scale(guy, (300, 300))
 
 MONITOR_INFO = pygame.display.Info()
 
 MONITOR_HEIGHT = MONITOR_INFO.current_h
 MONITOR_WIDTH = MONITOR_INFO.current_w
 
-WIDTH = 480
-HEIGHT = 360
+WIDTH = 720
+HEIGHT = 540
 window = pygame.display.set_mode([WIDTH, HEIGHT])
+c = pygame.time.Clock()
 
 #computer message functions
 
@@ -24,37 +27,21 @@ def click_button(button):
 
     pass
 
-# Graphical functions
-def generate_window(width, height, header_text, header_size=20):
 
-    # Limiting parameters
-    if header_size < 20:
-        header_size = 20
 
-    new_window = pygame.Surface((width, height + header_size))
-    new_window.fill((32, 32, 32))
+# HELP ME! HEEELP!
+def main_menu():
 
-    # Header generation
-    header = pygame.Surface((width - 4, header_size - 4))
-    gradations = max(20, int((width - 4) / 4))
-    step_size = (width - 4) / gradations
+    running = True
+    while running:
 
-    # Creating the gradient in the header
-    for i in range(gradations):
-        x = i * step_size
-        gradient_step = pygame.Surface((step_size + 1, header_size))
-        gradient_step.fill((0, 0, 150 - (75 * i / gradations)))
-        header.blit(gradient_step, (x, 0))
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
 
-    window_body = pygame.Rect(2, header_size, width - 4, height)
+        window.blit(guy, (0, 0))
+        pygame.display.flip()
+        c.tick(30)
 
-    pygame.draw.rect(new_window, (196, 196, 196), window_body)
-    new_window.blit(header, (2, 2))
-    return new_window
 
-nw = generate_window(300, 100)
-window.blit(nw, (0, 0))
-pygame.display.flip()
-
-input()
-
+main_menu()

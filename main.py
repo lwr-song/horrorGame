@@ -1,6 +1,9 @@
 import pygame
 pygame.init()
 
+# This is so that if you get rid of New Piskel.png the game crashes
+pygame.image.load("New Piskel.png")
+
 MONITOR_INFO = pygame.display.Info()
 
 MONITOR_HEIGHT = MONITOR_INFO.current_h
@@ -22,7 +25,7 @@ def click_button(button):
     pass
 
 # Graphical functions
-def generate_window(width, height, header_size=20):
+def generate_window(width, height, header_text, header_size=20):
 
     # Limiting parameters
     if header_size < 20:
@@ -40,7 +43,7 @@ def generate_window(width, height, header_size=20):
     for i in range(gradations):
         x = i * step_size
         gradient_step = pygame.Surface((step_size + 1, header_size))
-        gradient_step.fill((0, 0, 200 - (100 * i / gradations)))
+        gradient_step.fill((0, 0, 150 - (75 * i / gradations)))
         header.blit(gradient_step, (x, 0))
 
     window_body = pygame.Rect(2, header_size, width - 4, height)

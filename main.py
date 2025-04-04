@@ -13,7 +13,7 @@ MONITOR_WIDTH = MONITOR_INFO.current_w
 
 WIDTH = 720
 HEIGHT = 540
-window = pygame.display.set_mode([WIDTH, HEIGHT])
+window = pygame.display.set_mode([WIDTH, HEIGHT], flags=pygame.FULLSCREEN)
 c = pygame.time.Clock()
 
 #computer message functions

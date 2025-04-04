@@ -1,4 +1,7 @@
 # Graphical functions
+import pygame
+pygame.init()
+
 def generate_window(width, height, header_text, header_size=20):
 
     # Limiting parameters

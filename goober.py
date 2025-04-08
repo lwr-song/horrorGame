@@ -3,18 +3,24 @@
 import pygame
 pygame.init()
 
-behaviors = ["aggressive", "docile", "silent", "stubborn"]
+_behaviors = ["aggressive", "docile", "silent", "stubborn"]
 names = ["grog", "greg heffley"]
+types = ["bigfoot", "greg heffley's foot", "greg heffley", "athlete's foot"]
 
 class Goober:
 
-    def __init__(self, window, name, size, sprite, behavior, solution):
+    def __init__(self, window, name, size, sprite, behavior, erratic, solution):
         self.name = name
         self.sprite = pygame.image.load(sprite)
-        self.responses = self.determine_responses()
+        self.responses = {}
         self.solution = solution
+        self.behavior = behavior
+        self.erratic = erratic
+
 
 
     def determine_responses(self):
-        return "aaa"
+        if self.behavior in _behaviors:
+            return {"Visual":"Lights", }
 
+entity = Goober

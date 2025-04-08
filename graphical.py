@@ -28,3 +28,6 @@ def generate_window(width, height, header_text, header_size=20):
     pygame.draw.rect(new_window, (196, 196, 196), window_body)
     new_window.blit(header, (2, 2))
     return new_window
+
+def generate_button(width, height, shade_size=2):
+    pass

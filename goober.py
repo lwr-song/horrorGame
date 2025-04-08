@@ -13,7 +13,6 @@ class Goober:
         self.sprite = pygame.image.load(sprite)
         self.responses = self.determine_responses()
         self.solution = solution
-        window.blit(self.sprite, (100,200))
 
 
     def determine_responses(self):

@@ -4,7 +4,6 @@ pygame.init()
 
 # This is so that if you get rid of New Piskel.png the game crashes
 guy = pygame.image.load("New Piskel.png")
-guy = pygame.transform.scale(guy, (300, 300))
 
 MONITOR_INFO = pygame.display.Info()
 
@@ -39,7 +38,7 @@ def main_menu():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        window.blit(guy, (0, 0))
+
         pygame.display.flip()
         c.tick(30)
 

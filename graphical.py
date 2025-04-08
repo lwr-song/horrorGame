@@ -30,6 +30,19 @@ def generate_window(width, height, header_text, header_size=20):
     return new_window
 
 def generate_button(width, height, shade_size=6):
+    """
+    Creates a Surface, which contains a button sprite.
+    generate_button(int width, int height, int shade_size=6) => Surface
+
+    int width
+        The width of the button, which will automatically snap to be 10 if it is less than 10.
+
+    int height
+        The height of the button, which will automatically snap to be 10 if it is less than 10.
+
+    int shade_size=6
+        The size of the shading on the bottom part of the button
+    """
 
     if width < 10:
         width = 10

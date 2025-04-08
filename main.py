@@ -1,5 +1,6 @@
 import pygame
 import sys
+import graphical
 pygame.init()
 
 # This is so that if you get rid of New Piskel.png the game crashes
@@ -12,7 +13,7 @@ MONITOR_WIDTH = MONITOR_INFO.current_w
 
 WIDTH = 720
 HEIGHT = 540
-window = pygame.display.set_mode([WIDTH, HEIGHT], flags=pygame.FULLSCREEN)
+window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
 
 #computer message functions
@@ -31,6 +32,9 @@ def click_button(button):
 # HELP ME! HEEELP!
 def main_menu():
     window.blit(guy,(0,0))
+
+    b = graphical.generate_button(30, 30)
+
     running = True
     while running:
 
@@ -38,7 +42,7 @@ def main_menu():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-
+        window.blit(b, (0, 0))
         pygame.display.flip()
         c.tick(30)
 

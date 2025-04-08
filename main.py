@@ -17,7 +17,7 @@ c = pygame.time.Clock()
 
 #computer message functions
 
-
+guy = pygame.transform.scale(guy,(100,100))
 def send_message(user_window, sprite):
 
     pass
@@ -30,7 +30,7 @@ def click_button(button):
 
 # HELP ME! HEEELP!
 def main_menu():
-
+    window.blit(guy,(0,0))
     running = True
     while running:
 

@@ -33,7 +33,7 @@ def click_button(button):
 def main_menu():
     window.blit(guy,(0,0))
 
-    b = graphical.generate_button(30, 30)
+    b = graphical.generate_window(300, 300, "")
 
     running = True
     while running:
@@ -45,6 +45,10 @@ def main_menu():
         window.blit(b, (0, 0))
         pygame.display.flip()
         c.tick(30)
+
+
+def game_loop(day):
+    pass
 
 
 main_menu()

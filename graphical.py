@@ -1,6 +1,8 @@
 # Graphical functions
-import pygame
+import pygame, pygame.freetype, os
 pygame.init()
+
+TEXT_FONT = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
 
 def generate_window(width, height, header_text, header_size=20):
 
@@ -22,6 +24,11 @@ def generate_window(width, height, header_text, header_size=20):
         gradient_step = pygame.Surface((step_size + 1, header_size))
         gradient_step.fill((0, 0, 150 - (75 * i / gradations)))
         header.blit(gradient_step, (x, 0))
+
+    # Header text
+    TEXT_FONT.fgcolor = (255, 255, 255)
+    TEXT_FONT.size = header_size - 4
+    TEXT_FONT.render_to(header, (2, 2), header_text)
 
     window_body = pygame.Rect(2, header_size, width - 4, height)
 

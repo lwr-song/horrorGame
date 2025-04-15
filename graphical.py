@@ -22,7 +22,7 @@ def generate_window(width, height, header_text, header_size=20):
     for i in range(gradations):
         x = i * step_size
         gradient_step = pygame.Surface((step_size + 1, header_size))
-        gradient_step.fill((0, 0, 150 - (75 * i / gradations)))
+        gradient_step.fill((0, 0, 216 - (96 * i / gradations)))
         header.blit(gradient_step, (x, 0))
 
     # Header text
@@ -32,25 +32,11 @@ def generate_window(width, height, header_text, header_size=20):
 
     window_body = pygame.Rect(2, header_size, width - 4, height)
 
-    pygame.draw.rect(new_window, (196, 196, 196), window_body)
+    pygame.draw.rect(new_window, (196, 196, 216), window_body)
     new_window.blit(header, (2, 2))
     return new_window
 
 def generate_button(width, height, shade_size=6):
-    """
-    Creates a Surface, which contains a button sprite.
-    generate_button(int width, int height, int shade_size=6) => Surface
-
-    int width
-        The width of the button, which will automatically snap to be 10 if it is less than 10.
-
-    int height
-        The height of the button, which will automatically snap to be 10 if it is less than 10.
-
-    int shade_size=6
-        The size of the shading on the bottom part of the button
-    """
-
     if width < 10:
         width = 10
     if height < 10:
@@ -59,11 +45,28 @@ def generate_button(width, height, shade_size=6):
     button = pygame.Surface((width, height))
 
     button_body = pygame.Surface((width - 2, height - 2))
-    button_body.fill((196, 196, 196))
+    button_body.fill((196, 196, 216))
     shade = pygame.Surface((width - 2, shade_size))
-    shade.fill((128, 128, 128))
+    shade.fill((128, 128, 144))
 
     button_body.blit(shade, (0, height - (1 + shade_size)))
     button.blit(button_body, (1, 1))
 
     return button
+
+
+class Dropdown:
+    def __init__(self, options, width):
+
+        if len(options) == 0:
+            raise ValueError("Dropdowns one or more options")
+
+        self.options = options
+        self.selected_option = options[0]
+
+        self.body = pygame.Surface((width, 20))
+        innards = pygame.Surface((width - 4, 16))
+        innards.fill((236, 236, 255))
+        self.body.blit(innards, (2, 2))
+
+

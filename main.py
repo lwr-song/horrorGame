@@ -1,6 +1,6 @@
 import pygame
 import sys
-import graphical
+import graphical, webcam
 pygame.init()
 
 # This is so that if you get rid of New Piskel.png the game crashes
@@ -33,7 +33,7 @@ def click_button(button):
 def main_menu():
     window.blit(guy,(0,0))
 
-    b = graphical.generate_window(300, 300, "")
+    b = graphical.generate_window(300, 300, "Woke")
 
     running = True
     while running:
@@ -48,7 +48,20 @@ def main_menu():
 
 
 def game_loop(day):
-    pass
+
+    roprown = graphical.Dropdown(["3", "4", "5"], 200)
+
+    running = True
+    while running:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+        window.blit(roprown.body, (0,0))
+
+        pygame.display.flip()
 
 
-main_menu()
+
+game_loop(1)

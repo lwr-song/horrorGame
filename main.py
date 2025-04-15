@@ -49,7 +49,7 @@ def main_menu():
 
 def game_loop(day):
 
-    roprown = graphical.Dropdown(["3", "4", "5"], 200)
+    roprown = graphical.Dropdown(["my father", "my brother", "my mother"], 200)
 
     running = True
     while running:
@@ -58,7 +58,7 @@ def game_loop(day):
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        window.blit(roprown.body, (0,0))
+        roprown.render(window, 0, 0)
 
         pygame.display.flip()
 

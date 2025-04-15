@@ -2,7 +2,12 @@
 import pygame, pygame.freetype, os
 pygame.init()
 
-TEXT_FONT = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
+TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
+TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "Pixelsix00-z7DD.ttf"))
+TF_BASIC.size = 12
+TF_BASIC.fgcolor = (0, 0, 0)
+
+DROPDOWN_ARROW = pygame.image.load(os.path.join("Assets", "Sprites", "UI", "dropdown_down_arrow.png"))
 
 def generate_window(width, height, header_text, header_size=20):
 
@@ -26,9 +31,9 @@ def generate_window(width, height, header_text, header_size=20):
         header.blit(gradient_step, (x, 0))
 
     # Header text
-    TEXT_FONT.fgcolor = (255, 255, 255)
-    TEXT_FONT.size = header_size - 4
-    TEXT_FONT.render_to(header, (2, 2), header_text)
+    TF_HEADER.fgcolor = (255, 255, 255)
+    TF_HEADER.size = header_size - 4
+    TF_HEADER.render_to(header, (2, 2), header_text)
 
     window_body = pygame.Rect(2, header_size, width - 4, height)
 
@@ -62,11 +67,31 @@ class Dropdown:
             raise ValueError("Dropdowns one or more options")
 
         self.options = options
-        self.selected_option = options[0]
+        self.selected_option = 0
+        self.open = True
 
         self.body = pygame.Surface((width, 20))
         innards = pygame.Surface((width - 4, 16))
         innards.fill((236, 236, 255))
         self.body.blit(innards, (2, 2))
+        self.body.blit(DROPDOWN_ARROW, (width - 18, 2))
 
+        self.SELECTOR_HEIGHT = 20 * len(self.options)
+        self.selection_list = pygame.Surface((width, self.SELECTOR_HEIGHT))
+        self.selection_list.fill((196, 196, 216))
 
+        for i in range(len(self.options)):
+            TF_BASIC.render_to(self.selection_list, (0, i * 20 + 3), self.options[self.selected_option])
+
+    def render(self, window, x, y):
+
+        window.blit(self.body, (x, y))
+        TF_BASIC.render_to(window, (x + 5, y + 3), self.options[self.selected_option])
+
+        if self.open:
+
+            target_y = y + 20
+            window.blit(self.selection_list, (x, target_y))
+
+    def change_open_state(self):
+        self.open = not self.open

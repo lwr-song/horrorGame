@@ -1,6 +1,6 @@
 import pygame
 import sys
-import graphical, webcam
+import components, webcam
 pygame.init()
 
 # This is so that if you get rid of New Piskel.png the game crashes
@@ -15,6 +15,8 @@ WIDTH = 720
 HEIGHT = 540
 window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
+
+soup = []
 
 #computer message functions
 
@@ -33,7 +35,7 @@ def click_button(button):
 def main_menu():
     window.blit(guy,(0,0))
 
-    b = graphical.generate_window(300, 300, "Woke")
+    b = components.generate_window(300, 300, "Woke")
 
     running = True
     while running:
@@ -49,7 +51,7 @@ def main_menu():
 
 def game_loop(day):
 
-    roprown = graphical.Dropdown(["my father", "my brother", "my mother"], 200)
+    roprown = components.Dropdown(["my father", "my brother", "my mother"], 200, (0, 500), soup)
 
     running = True
     while running:
@@ -58,7 +60,13 @@ def game_loop(day):
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        roprown.render(window, 0, 0)
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                for clickable in soup:
+                    clickable.mouse_click_behavior(x, y)
+
+        window.fill((0, 0, 0))
+        roprown.render(window)
 
         pygame.display.flip()
 

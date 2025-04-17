@@ -1,4 +1,4 @@
-import pygame, graphical, os
+import pygame, components, os
 pygame.init()
 
 class Webcam:
@@ -7,7 +7,7 @@ class Webcam:
         self.WIDTH = 300 # PLease
         self.HEIGHT = 200
 
-        self.body = graphical.generate_window(self.WIDTH, self.HEIGHT, "webcam")
+        self.body = components.generate_window(self.WIDTH, self.HEIGHT, "webcam")
 
     def render(self, window):
 

@@ -41,6 +41,7 @@ def generate_window(width, height, header_text, header_size=20):
     new_window.blit(header, (2, 2))
     return new_window
 
+
 def generate_button(width, height, shade_size=6):
     if width < 10:
         width = 10
@@ -61,7 +62,7 @@ def generate_button(width, height, shade_size=6):
 
 
 class Dropdown:
-    def __init__(self, options, width):
+    def __init__(self, options, width, position, group=None):
 
         if len(options) == 0:
             raise ValueError("Dropdowns one or more options")
@@ -69,6 +70,10 @@ class Dropdown:
         self.options = options
         self.selected_option = 0
         self.open = True
+        self.position = position
+        self.x, self.y = position
+        self.WIDTH = width
+        self.HEIGHT = 20
 
         self.body = pygame.Surface((width, 20))
         innards = pygame.Surface((width - 4, 16))
@@ -81,17 +86,44 @@ class Dropdown:
         self.selection_list.fill((196, 196, 216))
 
         for i in range(len(self.options)):
-            TF_BASIC.render_to(self.selection_list, (0, i * 20 + 3), self.options[self.selected_option])
+            TF_BASIC.render_to(self.selection_list, (0, i * 20 + 3), self.options[i])
 
-    def render(self, window, x, y):
+        if group is not None:
+            group.append(self)
 
-        window.blit(self.body, (x, y))
-        TF_BASIC.render_to(window, (x + 5, y + 3), self.options[self.selected_option])
+    def render(self, window):
+
+        window.blit(self.body, self.position)
+        TF_BASIC.render_to(window, (self.x + 5, self.y + 3), self.options[self.selected_option])
 
         if self.open:
+            window.blit(self.selection_list, (self.x, self.target_y))
 
-            target_y = y + 20
-            window.blit(self.selection_list, (x, target_y))
 
-    def change_open_state(self):
-        self.open = not self.open
+    @property
+    def target_y(self):
+        bottom_of_dropdown = self.y + self.HEIGHT
+        if bottom_of_dropdown + self.SELECTOR_HEIGHT > 540:
+            return self.y - self.SELECTOR_HEIGHT
+        else:
+            return bottom_of_dropdown
+
+
+    def mouse_click_behavior(self, x, y):
+        if self.x < x < self.x + self.WIDTH:
+
+            if self.open:
+                if y > self.y + self.HEIGHT:
+                    choice = (y - (self.y + self.HEIGHT)) // 20
+                elif y < self.y:
+                    choice = (self.y - y) // 20
+                else:
+                    choice = self.selected_option
+
+                if 0 <= choice < len(self.options):
+                    self.selected_option = choice
+
+                self.open = not self.open
+
+            if self.y < y < self.y + self.HEIGHT:
+                self.open = not self.open

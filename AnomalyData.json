@@ -1,8 +1,8 @@
 {
-  "Yargle Bagel": {
+  "Yargle Bargle": {
     "Sprite": "the greechure.png",
     "Behavior": "Aggressive",
-    "Solution": "Give it twelve chocolate chips."
+    "Solution": "Run your bathtub for twelve hours"
   },
 
   "po": {
@@ -20,7 +20,7 @@
   "grog": {
     "Sprite": "the greechure.png",
     "Behavior": "Stubborn",
-    "Solution": "You have to hit it with a broom five times."
+    "Solution": "You have to play clock ticking sounds for six hours."
   }
 
 }

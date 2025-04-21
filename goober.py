@@ -1,16 +1,13 @@
 #the grink
 #grython
 import pygame
-import csv
+
 
 
 types = ["Shminguss", "Yargle Bargle", "Dingus", "Tinky Winky", "OOOOOh"]
 _behaviors = ["aggressive", "docile", "silent", "stubborn"]
 rows = []
-with open("AnomalyData.csv") as csv_file:
-    reader = csv.DictReader(csv_file, fieldnames = _behaviors)
-    for row in reader:
-        rows.append(row)
+
 
 pygame.init()
 

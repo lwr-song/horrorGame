@@ -1,0 +1,26 @@
+{
+  "Yargle Bargle": {
+    "Sprite": "the greechure.png",
+    "Behavior": "Aggressive",
+    "Solution": "Run your bathtub for twelve hours"
+  },
+
+  "po": {
+    "Sprite": "the greechure.png",
+    "Behavior": "Docile",
+    "Solution": "You have to hit it with a broom five times."
+  },
+
+  "Shmingus": {
+    "Sprite": "the greechure.png",
+    "Behavior": "Silent",
+    "Solution": "Switch to channel three on your television."
+  },
+
+  "grog": {
+    "Sprite": "the greechure.png",
+    "Behavior": "Stubborn",
+    "Solution": "You have to play clock ticking sounds for six hours."
+  }
+
+}

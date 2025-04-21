@@ -51,7 +51,7 @@ def main_menu():
 
 def game_loop(day):
 
-    roprown = components.Dropdown(["my father", "my brother", "my mother"], 200, (0, 500), soup)
+    roprown = webcam.Webcam()
 
     running = True
     while running:
@@ -66,7 +66,7 @@ def game_loop(day):
                     clickable.mouse_click_behavior(x, y)
 
         window.fill((0, 0, 0))
-        roprown.render(window)
+        roprown.render(window, (WIDTH / 2 - roprown.WIDTH / 2, 200))
 
         pygame.display.flip()
 

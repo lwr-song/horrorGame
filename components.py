@@ -116,14 +116,17 @@ class Dropdown:
                 if y > self.y + self.HEIGHT:
                     choice = (y - (self.y + self.HEIGHT)) // 20
                 elif y < self.y:
-                    choice = (self.y - y) // 20
+                    choice = len(self.options) - (self.y - y) // 20 - 1
                 else:
                     choice = self.selected_option
 
                 if 0 <= choice < len(self.options):
                     self.selected_option = choice
 
+                self.open = False
+
+            elif self.y < y < self.y + self.HEIGHT:
                 self.open = not self.open
 
-            if self.y < y < self.y + self.HEIGHT:
-                self.open = not self.open
+        else:
+            self.open = False

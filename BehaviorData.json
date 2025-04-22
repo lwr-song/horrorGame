@@ -1,21 +1,21 @@
 {
   "Silent": {
 
-    "Sound": {"Chirping" :15,
-      "Knocking": 5,
-      "Crying" : 90,
-      "Wind" : 20,
-      "Drip" : 80,
-      "Screaming": 0 ,
-      "Shatter" : 60},
+    "Sound": {"Chirping" :false,
+      "Knocking": true,
+      "Crying" : true,
+      "Wind" : false,
+      "Drip" : true,
+      "Screaming": true,
+      "Shatter" : false},
 
-      "Visual": {"Mirror": 5,
-        "Picture": 5,
-        "Drawing": 90,
-        "Sky": 80,
-        "Color":70,
-        "LightsOff":5,
-        "FlashingLights": 10}
+    "Visual": {"Mirror": false,
+      "Picture": true,
+      "Drawing": false,
+      "Sky": true,
+      "Color":false,
+      "LightsOff":true,
+      "FlashingLights": true}
   }
 
 }

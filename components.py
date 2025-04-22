@@ -3,8 +3,8 @@ import pygame, pygame.freetype, os
 pygame.init()
 
 TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
-TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "Pixelsix00-z7DD.ttf"))
-TF_BASIC.size = 12
+TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
+TF_BASIC.size = 14
 TF_BASIC.fgcolor = (0, 0, 0)
 
 DROPDOWN_ARROW = pygame.image.load(os.path.join("Assets", "Sprites", "UI", "dropdown_down_arrow.png"))
@@ -61,7 +61,7 @@ def generate_button(width, height, shade_size=6):
     return button
 
 class Button:
-    def __init__(Self, x, y, width, height, response, shade_size=6):
+    def __init__(self, x, y, width, height, response, shade_size=6):
         self.body = generate_button(width, height, shade_size)
         self.width = width
         self.height = height
@@ -71,7 +71,7 @@ class Button:
     def render(self, window):
         window.blit(self.body, self.position)
 
-    def mouse_click_behavior(x, y):
+    def mouse_click_behavior(self, x, y):
         if (self.x < x < self.x + self.width or
             self.y < y < self.y + self.height):
             return self.response
@@ -91,29 +91,35 @@ class Dropdown:
         self.WIDTH = width
         self.HEIGHT = 20
 
-        self.body = pygame.Surface((width, 20))
+        self.body = pygame.Surface((width, self.HEIGHT))
         innards = pygame.Surface((width - 4, 16))
         innards.fill((236, 236, 255))
         self.body.blit(innards, (2, 2))
         self.body.blit(DROPDOWN_ARROW, (width - 18, 2))
 
-        self.SELECTOR_HEIGHT = 20 * len(self.options)
+        self.SELECTOR_HEIGHT = self.HEIGHT * len(self.options)
         self.selection_list = pygame.Surface((width, self.SELECTOR_HEIGHT))
-        self.selection_list.fill((196, 196, 216))
+        self.selection_list.fill((236, 236, 255))
 
         for i in range(len(self.options)):
-            TF_BASIC.render_to(self.selection_list, (0, i * 20 + 3), self.options[i])
+            TF_BASIC.render_to(self.selection_list, (5, i * self.HEIGHT + 3), self.options[i])
 
         if group is not None:
             group.append(self)
 
-    def render(self, window):
+    def render(self, window, position=None):
 
-        window.blit(self.body, self.position)
-        TF_BASIC.render_to(window, (self.x + 5, self.y + 3), self.options[self.selected_option])
+        if position == None:
+            position = self.position
+            x, y = (self.x, self.y)
+        else:
+            x, y = position
+
+        window.blit(self.body, position)
+        TF_BASIC.render_to(window, (x + 5, self.y + 3), self.options[self.selected_option])
 
         if self.open:
-            window.blit(self.selection_list, (self.x, self.target_y))
+            window.blit(self.selection_list, (x, self.target_y))
 
 
     @property
@@ -130,9 +136,9 @@ class Dropdown:
 
             if self.open:
                 if y > self.y + self.HEIGHT:
-                    choice = (y - (self.y + self.HEIGHT)) // 20
+                    choice = (y - (self.y + self.HEIGHT)) // 26
                 elif y < self.y:
-                    choice = len(self.options) - (self.y - y) // 20 - 1
+                    choice = len(self.options) - (self.y - y) // 26 - 1
                 else:
                     choice = self.selected_option
 
@@ -146,3 +152,5 @@ class Dropdown:
 
         else:
             self.open = False
+
+        return None

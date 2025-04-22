@@ -66,7 +66,7 @@ def game_loop(day):
                     clickable.mouse_click_behavior(x, y)
 
         window.fill((0, 0, 0))
-        roprown.render(window, (WIDTH / 2 - roprown.WIDTH / 2, 200))
+        roprown.render(window, (WIDTH / 2 - roprown.WIDTH / 2, 50))
 
         pygame.display.flip()
 

@@ -61,7 +61,7 @@ def generate_button(width, height, shade_size=6):
     return button
 
 class Button:
-    def __init__(Self, x, y, width, height, response, shade_size=6):
+    def __init__(self, x, y, width, height, response, shade_size=6):
         self.body = generate_button(width, height, shade_size)
         self.width = width
         self.height = height

@@ -60,12 +60,28 @@ def generate_button(width, height, shade_size=6):
 
     return button
 
+class Button:
+    def __init__(Self, x, y, width, height, response, shade_size=6):
+        self.body = generate_button(width, height, shade_size)
+        self.width = width
+        self.height = height
+        self.response = response
+        self.x, self.y, self.position = (x, y, (x, y))
+
+    def render(self, window):
+        window.blit(self.body, self.position)
+
+    def mouse_click_behavior(x, y):
+        if (self.x < x < self.x + self.width or
+            self.y < y < self.y + self.height):
+            return self.response
+
 
 class Dropdown:
     def __init__(self, options, width, position, group=None):
 
         if len(options) == 0:
-            raise ValueError("Dropdowns one or more options")
+            raise ValueError("Dropdowns require one or more options")
 
         self.options = options
         self.selected_option = 0

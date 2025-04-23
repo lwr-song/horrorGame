@@ -15,8 +15,8 @@ MONITOR_INFO = pygame.display.Info()
 MONITOR_HEIGHT = MONITOR_INFO.current_h
 MONITOR_WIDTH = MONITOR_INFO.current_w
 
-WIDTH = 720
-HEIGHT = 540
+WIDTH = 1080
+HEIGHT = 720
 window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
 

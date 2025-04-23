@@ -43,8 +43,8 @@ class Webcam:
         )
         self.subtitles = components.SubtitleHolder(do_truncation=False)
 
-        self.subtitles.add_subtitle("there is a dog", 4, 1)
-        self.subtitles.add_subtitle("there is a HIGHER PRIORITY", 2, 2)
+        self.subtitles.add_subtitle("chicken jockey!", 4, 1)
+        self.subtitles.add_subtitle("higher priority subtitle", 2, 2)
 
         self._build_display()
 
@@ -58,7 +58,7 @@ class Webcam:
         to_render.blit(self.body, (0, 0))
         to_render.blit(self.display.body, (13, 33))
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
-        self.subtitles.render(to_render, self.WIDTH / 2, 0)
+        self.subtitles.render(to_render, self.WIDTH / 2, 260)
         window.blit(to_render, self.position)
         self.audio_selector.render(window, self.position)
 

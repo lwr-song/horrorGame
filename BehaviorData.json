@@ -1,21 +1,21 @@
 {
   "Silent": {
 
-    "Sound": {"Chirping" :false,
+    "Sound": {"Bird Chirp" :false,
       "Knocking": true,
-      "Crying" : true,
+      "Baby Crying" : true,
       "Wind" : false,
-      "Drip" : true,
+      "Water Drip" : true,
       "Screaming": true,
-      "Shatter" : false},
+      "Glass Break" : false},
 
     "Visual": {"Mirror": false,
-      "Picture": true,
+      "Family Picture": true,
       "Drawing": false,
       "Sky": true,
-      "Color":false,
-      "LightsOff":true,
-      "FlashingLights": true}
+      "Colored Lights":false,
+      "Lights Off":true,
+      "Flashing Lights": true}
   }
 
 }

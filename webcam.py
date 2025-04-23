@@ -20,23 +20,23 @@ class Webcam:
         self.soup = []
 
         self.audio_selector = components.Dropdown(
-            ["Bird chirp",
+            ["Bird Chirp",
              "Knocking",
-             "Baby cry",
+             "Baby Cry",
              "Wind",
-             "Water drip",
+             "Water Drip",
              "Screaming",
-             "Glass break"],
+             "Glass Break"],
             (5 + self.WIDTH, 50),
             group=self.soup
         )
         self.video_selector = components.Dropdown(
             ["Mirror",
              "Picture of family",
-             "Children's drawing",
+             "Drawing",
              "Sky",
-             "Colored lights",
-             "Turn off lights",
+             "Colored Lights",
+             "Lights Off",
              "Flashing lights"],
             (5 + self.WIDTH, 140),
             group=self.soup

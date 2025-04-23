@@ -1,12 +1,19 @@
 #the grink
 #grython
 import pygame
-
+import json
 
 types = ["Shminguss", "Yargle Bargle", "Dingus", "Tinky Winky", "OOOOOh"]
-_behaviors = ["aggressive", "docile", "silent", "stubborn"]
+behaviors = ["aggressive", "docile", "silent", "stubborn"]
 rows = []
 
+with open("AnomalyData.json") as file:
+    anomaly_data = json.load(file)
+
+with open("BehaviorData.jsonq") as file:
+    behavior_data = json.load(file)
+
+print(anomaly_data["Yargle Bargle"]["Solution"])
 
 pygame.init()
 

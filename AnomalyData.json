@@ -15,7 +15,7 @@
 
   "Shmingus": {
     "Sprite": "the greechure.png",
-    "Size": [400,400] ,
+    "Size": [100,100] ,
     "Behavior": "Silent",
     "Solution": "Switch to channel three on your television."
   },

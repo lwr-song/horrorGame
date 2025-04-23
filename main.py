@@ -1,6 +1,10 @@
 import pygame
 import sys
 import components, webcam
+import goober
+
+
+
 pygame.init()
 
 # This is so that if you get rid of New Piskel.png the game crashes
@@ -16,10 +20,18 @@ HEIGHT = 540
 window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
 
-soup = [] # It stands for sprite loup (All the clickable objects go here)
+soup = []
 
+#computer message functions
 
 guy = pygame.transform.scale(guy,(100,100))
+def send_message(user_window, sprite):
+
+    pass
+
+def click_button(button):
+
+    pass
 
 
 
@@ -59,10 +71,9 @@ def game_loop(day):
 
         window.fill((0, 0, 0))
         roprown.render(window)
+        greachure = goober.Goober(window, "greg gregffley", "Shmingus")
 
         pygame.display.flip()
-
-
 
 
 

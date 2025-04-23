@@ -10,7 +10,7 @@ behaviors = ["aggressive", "docile", "silent", "stubborn"]
 with open("AnomalyData.json") as file:
     anomaly_data = json.load(file)
 
-with open("BehaviorData.jsonq") as file:
+with open("BehaviorData.json") as file:
     behavior_data = json.load(file)
 
 
@@ -36,12 +36,12 @@ class Goober:
 
         self.sprite = pygame.image.load( os.path.join("Assets","Sprites","Goober", self.specific_type["Sprite"] ))
 
-        pygame.transform.scale(self.sprite, self.specific_type["Size"])
+        self.sprite = pygame.transform.scale(self.sprite, self.specific_type["Size"])
 
 
-        self.responses = behavior_data(self.behavior)
+        self.responses = behavior_data[self.behavior]
         self.solution = self.specific_type["Solution"]
 
         self.window = window
-        window.blit(self.sprite, (0,0))
+        window.blit(self.sprite, (200,200))
 

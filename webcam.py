@@ -4,13 +4,20 @@ pygame.init()
 webcam_path = os.path.join("Assets", "Sprites", "UI", "webcam.png")
 
 class Webcam:
-    def __init__(self):
+    def __init__(self, position, group=None):
+
+        if group is not None:
+            group.append(self)
 
         self.WIDTH = 350 # PLease
         self.HEIGHT = 350
+        self.STIMULUS_WINDOW_WIDTH = 200
+        self.position = (position[0] - (self.WIDTH + self.STIMULUS_WINDOW_WIDTH) / 2, position[1])
 
-        self.body = components.generate_window(self.WIDTH, self.HEIGHT, "webcam")
+        self.body = components.generate_window(self.WIDTH, self.HEIGHT, "webcam", color=(0, 0, 0))
         self.display = WebcamDisplay()
+        self.stimulus_window = components.generate_window(self.STIMULUS_WINDOW_WIDTH, self.HEIGHT, "prompt")
+        self.soup = []
 
         self.audio_selector = components.Dropdown(
             ["Bird chirp",
@@ -20,22 +27,28 @@ class Webcam:
              "Water drip",
              "Screaming",
              "Glass break"],
-            120, (13, 295)
+            (5 + self.WIDTH, 50),
+            group=self.soup
         )
 
         self._build_display()
 
     def _build_display(self):
-        components.TF_BASIC.render_to(self.body, (13, 270), "SELECT AUDIO PROMPT")
+        components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "SELECT AUDIO PROMPT")
 
-    def render(self, window, position):
+    def render(self, window):
 
-        to_render = pygame.Surface((self.WIDTH, self.HEIGHT))
+        to_render = pygame.Surface((self.WIDTH + self.STIMULUS_WINDOW_WIDTH, self.HEIGHT))
         to_render.blit(self.body, (0, 0))
         to_render.blit(self.display.body, (13, 33))
+        to_render.blit(self.stimulus_window, (self.WIDTH, 0))
 
-        window.blit(to_render, position)
-        self.audio_selector.render(window)
+        window.blit(to_render, self.position)
+        self.audio_selector.render(window, self.position)
+
+    def mouse_click_behavior(self, x, y):
+        for clickable in self.soup:
+            clickable.mouse_click_behavior(x, y, self.position)
 
 class WebcamDisplay:
     def __init__(self):

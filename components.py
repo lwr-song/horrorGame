@@ -4,12 +4,14 @@ pygame.init()
 
 TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
 TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
-TF_BASIC.size = 14
+TF_BASIC.size = 16
 TF_BASIC.fgcolor = (0, 0, 0)
+
+AUTOFIT = -1
 
 DROPDOWN_ARROW = pygame.image.load(os.path.join("Assets", "Sprites", "UI", "dropdown_down_arrow.png"))
 
-def generate_window(width, height, header_text, header_size=20):
+def generate_window(width, height, header_text, header_size=20, color=(196, 196, 216)):
 
     # Limiting parameters
     if header_size < 20:
@@ -37,7 +39,7 @@ def generate_window(width, height, header_text, header_size=20):
 
     window_body = pygame.Rect(2, header_size, width - 4, height)
 
-    pygame.draw.rect(new_window, (196, 196, 216), window_body)
+    pygame.draw.rect(new_window, color, window_body)
     new_window.blit(header, (2, 2))
     return new_window
 
@@ -78,14 +80,18 @@ class Button:
 
 
 class Dropdown:
-    def __init__(self, options, width, position, group=None):
+    def __init__(self, options, position, width=AUTOFIT, group=None):
 
         if len(options) == 0:
             raise ValueError("Dropdowns require one or more options")
 
+        if width == AUTOFIT:
+            sorted_options = sorted(options, key=len)
+            width = TF_BASIC.get_rect(sorted_options[-1]).width + 30
+
         self.options = options
         self.selected_option = 0
-        self.open = True
+        self.open = False
         self.position = position
         self.x, self.y = position
         self.WIDTH = width
@@ -102,43 +108,41 @@ class Dropdown:
         self.selection_list.fill((236, 236, 255))
 
         for i in range(len(self.options)):
-            TF_BASIC.render_to(self.selection_list, (5, i * self.HEIGHT + 3), self.options[i])
+            TF_BASIC.render_to(self.selection_list, (5, i * self.HEIGHT + 5), self.options[i])
 
         if group is not None:
             group.append(self)
 
-    def render(self, window, position=None):
+    def render(self, window, relative_position=(0, 0)):
 
-        if position == None:
-            position = self.position
-            x, y = (self.x, self.y)
-        else:
-            x, y = position
-
-        window.blit(self.body, position)
-        TF_BASIC.render_to(window, (x + 5, self.y + 3), self.options[self.selected_option])
+        x = self.x + relative_position[0]
+        y = self.y + relative_position[1]
+        
+        window.blit(self.body, (x, y))
+        TF_BASIC.render_to(window, (x + 5, y + 3), self.options[self.selected_option])
 
         if self.open:
-            window.blit(self.selection_list, (x, self.target_y))
+            bottom_of_dropdown = y + self.HEIGHT
+            if bottom_of_dropdown + self.SELECTOR_HEIGHT > 540:
+                target_y = y - self.SELECTOR_HEIGHT
+            else:
+                target_y = bottom_of_dropdown
+            window.blit(self.selection_list, (x, target_y))
+        
 
 
-    @property
-    def target_y(self):
-        bottom_of_dropdown = self.y + self.HEIGHT
-        if bottom_of_dropdown + self.SELECTOR_HEIGHT > 540:
-            return self.y - self.SELECTOR_HEIGHT
-        else:
-            return bottom_of_dropdown
+    def mouse_click_behavior(self, mx, my, relative_position=(0, 0)):
+        
+        x = relative_position[0] + self.x
+        y = relative_position[1] + self.y
 
-
-    def mouse_click_behavior(self, x, y):
-        if self.x < x < self.x + self.WIDTH:
+        if x < mx < x + self.WIDTH:
 
             if self.open:
-                if y > self.y + self.HEIGHT:
-                    choice = (y - (self.y + self.HEIGHT)) // 26
-                elif y < self.y:
-                    choice = len(self.options) - (self.y - y) // 26 - 1
+                if my > y + self.HEIGHT:
+                    choice = (my - (y + self.HEIGHT)) // self.HEIGHT
+                elif my < y:
+                    choice = len(self.options) - (y - my) // self.HEIGHT - 1
                 else:
                     choice = self.selected_option
 
@@ -147,7 +151,7 @@ class Dropdown:
 
                 self.open = False
 
-            elif self.y < y < self.y + self.HEIGHT:
+            elif y < my < y + self.HEIGHT:
                 self.open = not self.open
 
         else:

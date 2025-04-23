@@ -35,7 +35,7 @@ def click_button(button):
 def main_menu():
     window.blit(guy,(0,0))
 
-    b = components.generate_window(300, 300, "Woke")
+    b = components.generate_window(WIDTH / 2, 300, "Woke")
 
     running = True
     while running:
@@ -51,7 +51,7 @@ def main_menu():
 
 def game_loop(day):
 
-    roprown = webcam.Webcam()
+    roprown = webcam.Webcam((WIDTH / 2, 50), soup)
 
     running = True
     while running:
@@ -66,7 +66,7 @@ def game_loop(day):
                     clickable.mouse_click_behavior(x, y)
 
         window.fill((0, 0, 0))
-        roprown.render(window, (WIDTH / 2 - roprown.WIDTH / 2, 50))
+        roprown.render(window)
 
         pygame.display.flip()
 

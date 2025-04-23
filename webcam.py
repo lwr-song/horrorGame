@@ -30,11 +30,23 @@ class Webcam:
             (5 + self.WIDTH, 50),
             group=self.soup
         )
+        self.video_selector = components.Dropdown(
+            ["Mirror",
+             "Picture of family",
+             "Children's drawing",
+             "Sky",
+             "Colored lights",
+             "Turn off lights",
+             "Flashing lights"],
+            (5 + self.WIDTH, 140),
+            group=self.soup
+        )
 
         self._build_display()
 
     def _build_display(self):
         components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "SELECT AUDIO PROMPT")
+        components.TF_BASIC.render_to(self.stimulus_window, (5, 110), "SELECT VIDEO PROMPT")
 
     def render(self, window):
 

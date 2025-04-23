@@ -191,8 +191,8 @@ class SubtitleHolder:
             focus_subtitle = subtitles[i]
             TF_SUBTITLE.render_to(
                 window, (
-                    center_x - TF_SUBTITLE.get_rect(focus_subtitle.text) / 2
-                    center_y + 25 * i
+                    center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
+                    top_y + 25 * i
                 ), focus_subtitle.text
             )
             

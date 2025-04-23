@@ -3,7 +3,6 @@
 import pygame
 
 
-
 types = ["Shminguss", "Yargle Bargle", "Dingus", "Tinky Winky", "OOOOOh"]
 _behaviors = ["aggressive", "docile", "silent", "stubborn"]
 rows = []

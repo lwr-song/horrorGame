@@ -116,16 +116,17 @@ class Dropdown:
         self.selection_list = pygame.Surface((width, self.SELECTOR_HEIGHT))
         self.selection_list.fill((236, 236, 255))
 
-        self.bottom_of_dropdown = self.y + self.HEIGHT
-        self.overflow = (self.bottom_of_dropdown + self.SELECTOR_HEIGHT) > 720
-
         for i in range(len(self.options)):
             TF_BASIC.render_to(self.selection_list, (5, i * self.HEIGHT + 5), self.options[i])
 
         if group is not None:
             group.append(self)
 
-    def render(self, window, relative_position=(0, 0)):
+    def is_overflow(relative_position=(0, 0)):
+        bottom_of_dropdown = self.y + self.HEIGHT + relative_position[1]
+        return bottom_of_dropdown + self.SELECTOR_HEIGHT > 720
+
+    def render(self, relative_position=(0, 0)):
 
         x = self.x + relative_position[0]
         y = self.y + relative_position[1]
@@ -134,10 +135,11 @@ class Dropdown:
         TF_BASIC.render_to(window, (x + 5, y + 3), self.options[self.selected_option])
 
         if self.open:
-            if self.overflow > 720:
+            bottom_of_dropdown = y + self.HEIGHT
+            if bottom_of_dropdown + self.SELECTOR_HEIGHT > 720:
                 target_y = y - self.SELECTOR_HEIGHT
             else:
-                target_y = self.bottom_of_dropdown
+                target_y = bottom_of_dropdown
             window.blit(self.selection_list, (x, target_y))
 
     def mouse_click_behavior(self, mx, my, relative_position=(0, 0)):
@@ -146,9 +148,10 @@ class Dropdown:
 
         if x < mx < x + self.WIDTH:
             if self.open:
-                if my > y + self.HEIGHT and self.overflow:
+                is_overflow = self.is_overflow(relative_position)
+                if my > y + self.HEIGHT and is_overflow:
                     choice = (my - (y + self.HEIGHT)) // self.HEIGHT
-                elif my < y and not self.overflow:
+                elif my < y and not is_overflow:
                     choice = len(self.options) - (y - my) // self.HEIGHT - 1
                 else:
                     choice = self.selected_option
@@ -165,11 +168,11 @@ class Dropdown:
 
 
 class Subtitle:
-    def __init__(self, text, lifespan, priority=0):
+    def __init__(self, text, lifespan, priority=0, offset=0):
         self.text = text
         self.lifespan = lifespan
         self.priority = priority
-        self.time = 0
+        self.time = -offset
 
         self.start_measure = time.time()
 

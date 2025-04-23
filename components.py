@@ -1,11 +1,16 @@
 # Graphical functions
-import pygame, pygame.freetype, os
+import pygame, pygame.freetype, os, time
 pygame.init()
 
 TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
+
 TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
 TF_BASIC.size = 16
 TF_BASIC.fgcolor = (0, 0, 0)
+
+TF_SUBTITLE = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
+TF_SUBTITLE.size = 20
+TF_SUBTITLE.fgcolor = (255, 255, 255)
 
 AUTOFIT = -1
 
@@ -128,16 +133,12 @@ class Dropdown:
             else:
                 target_y = bottom_of_dropdown
             window.blit(self.selection_list, (x, target_y))
-        
-
 
     def mouse_click_behavior(self, mx, my, relative_position=(0, 0)):
-        
         x = relative_position[0] + self.x
         y = relative_position[1] + self.y
 
         if x < mx < x + self.WIDTH:
-
             if self.open:
                 if my > y + self.HEIGHT:
                     choice = (my - (y + self.HEIGHT)) // self.HEIGHT
@@ -148,13 +149,50 @@ class Dropdown:
 
                 if 0 <= choice < len(self.options):
                     self.selected_option = choice
-
                 self.open = False
-
             elif y < my < y + self.HEIGHT:
                 self.open = not self.open
-
         else:
             self.open = False
 
         return None
+
+
+class Subtitle:
+    def __init__(self, text, lifespan, start_time=time.time(), priority=0):
+        self.text = text
+        self.lifespan = lifespan
+        self.priority = priority
+
+    def __lt__(self, other):
+        if self.priority < other.priority:
+            return True
+        return False
+
+
+class SubtitleHolder:
+    def __init__(self, channels=1, do_truncation=True):
+        self.channels = 1
+        self.subtitle_list = []
+        self.do_truncation = do_truncation
+
+    @property
+    def active_subtitles(self):
+        self.subtitle_list.sort()
+        self.subtitle_list.reverse()
+        if len(self.subtitle_list) <= self.channels:
+            return self.subtitle_list[:]
+        else:
+            return self.subtitle_list[-1:-(1 + self.channels):-1]
+
+    def render(self, window, center_x, top_y):
+        subtitles = self.active_subtitles
+        for i in range(len(subtitles)):
+            focus_subtitle = subtitles[i]
+            TF_SUBTITLE.render_to(
+                window, (
+                    center_x - TF_SUBTITLE.get_rect(focus_subtitle.text) / 2
+                    center_y + 25 * i
+                ), focus_subtitle.text
+            )
+            

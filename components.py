@@ -68,7 +68,11 @@ def generate_button(width, height, shade_size=6):
     return button
 
 class Button:
-    def __init__(self, x, y, width, height, response, shade_size=6):
+    def __init__(self, x, y, width, height, response, shade_size=6, group=None):
+
+        if group is not None:
+            group.append(self)
+
         self.body = generate_button(width, height, shade_size)
         self.width = width
         self.height = height
@@ -159,33 +163,54 @@ class Dropdown:
 
 
 class Subtitle:
-    def __init__(self, text, lifespan, start_time=time.time(), priority=0):
+    def __init__(self, text, lifespan, priority=0):
         self.text = text
         self.lifespan = lifespan
         self.priority = priority
+        self.time = 0
+
+        self.start_measure = time.time()
 
     def __lt__(self, other):
         if self.priority < other.priority:
             return True
         return False
 
+    def iterate(self):
+        self.time += time.time() - self.start_measure
+        self.start_measure = time.time()
+
 
 class SubtitleHolder:
     def __init__(self, channels=1, do_truncation=True):
-        self.channels = 1
+        self.channels = channels
         self.subtitle_list = []
         self.do_truncation = do_truncation
+
+    def add_subtitle(self, text, lifespan, priority=0):
+        self.subtitle_list.append(
+            Subtitle(text, lifespan, priority)
+        )
 
     @property
     def active_subtitles(self):
         self.subtitle_list.sort()
-        self.subtitle_list.reverse()
         if len(self.subtitle_list) <= self.channels:
             return self.subtitle_list[:]
         else:
-            return self.subtitle_list[-1:-(1 + self.channels):-1]
+            if self.do_truncation:
+                self.subtitle_list = self.subtitle_list[-1:-(1 + self.channels):-1]
+                return self.subtitle_list[:]
+            else:
+                return self.subtitle_list[-1:-(1 + self.channels):-1]
 
     def render(self, window, center_x, top_y):
+
+        for subtitle in self.subtitle_list:
+            subtitle.iterate()
+            if subtitle.time > subtitle.lifespan:
+                self.subtitle_list.remove(subtitle)
+
         subtitles = self.active_subtitles
         for i in range(len(subtitles)):
             focus_subtitle = subtitles[i]

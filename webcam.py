@@ -22,7 +22,7 @@ class Webcam:
         self.audio_selector = components.Dropdown(
             ["Bird Chirp",
              "Knocking",
-             "Baby Cry",
+             "Baby Crying",
              "Wind",
              "Water Drip",
              "Screaming",
@@ -32,15 +32,19 @@ class Webcam:
         )
         self.video_selector = components.Dropdown(
             ["Mirror",
-             "Picture of family",
+             "Family Picture",
              "Drawing",
              "Sky",
              "Colored Lights",
              "Lights Off",
-             "Flashing lights"],
+             "Flashing Lights"],
             (5 + self.WIDTH, 140),
             group=self.soup
         )
+        self.subtitles = components.SubtitleHolder(do_truncation=False)
+
+        self.subtitles.add_subtitle("there is a dog", 4, 1)
+        self.subtitles.add_subtitle("there is a HIGHER PRIORITY", 2, 2)
 
         self._build_display()
 
@@ -54,7 +58,7 @@ class Webcam:
         to_render.blit(self.body, (0, 0))
         to_render.blit(self.display.body, (13, 33))
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
-
+        self.subtitles.render(to_render, self.WIDTH / 2, 0)
         window.blit(to_render, self.position)
         self.audio_selector.render(window, self.position)
 

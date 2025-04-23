@@ -16,18 +16,10 @@ HEIGHT = 540
 window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
 
-soup = []
+soup = [] # It stands for sprite loup (All the clickable objects go here)
 
-#computer message functions
 
 guy = pygame.transform.scale(guy,(100,100))
-def send_message(user_window, sprite):
-
-    pass
-
-def click_button(button):
-
-    pass
 
 
 
@@ -69,6 +61,8 @@ def game_loop(day):
         roprown.render(window)
 
         pygame.display.flip()
+
+
 
 
 

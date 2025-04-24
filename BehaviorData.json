@@ -1,5 +1,59 @@
 {
+  "Aggressive": {
+
+    "Sound": {"Bird Chirp" :false,
+      "Knocking": true,
+      "Baby Crying": true,
+      "Wind": false,
+      "Water Drip": true,
+      "Screaming": true,
+      "Glass Break": false},
+
+    "Visual": {"Mirror": false,
+      "Family Picture": true,
+      "Drawing": false,
+      "Sky": true,
+      "Colored Lights": false,
+      "Lights Off": true,
+      "Flashing Lights": true}
+  },
+  "Docile": {
+
+    "Sound": {"Bird Chirp" :false,
+      "Knocking": true,
+      "Baby Crying": true,
+      "Wind": false,
+      "Water Drip": true,
+      "Screaming": true,
+      "Glass Break": false},
+
+    "Visual": {"Mirror": false,
+      "Family Picture": true,
+      "Drawing": false,
+      "Sky": true,
+      "Colored Lights": false,
+      "Lights Off": true,
+      "Flashing Lights": true}
+  },
   "Silent": {
+
+    "Sound": {"Bird Chirp" :false,
+      "Knocking": true,
+      "Baby Crying": true,
+      "Wind": false,
+      "Water Drip": true,
+      "Screaming": true,
+      "Glass Break": false},
+
+    "Visual": {"Mirror": false,
+      "Family Picture": true,
+      "Drawing": false,
+      "Sky": true,
+      "Colored Lights": false,
+      "Lights Off": true,
+      "Flashing Lights": true}
+  },
+  "Stubborn": {
 
     "Sound": {"Bird Chirp" :false,
       "Knocking": true,

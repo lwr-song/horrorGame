@@ -22,18 +22,7 @@ c = pygame.time.Clock()
 
 soup = []
 
-#computer message functions
-
 guy = pygame.transform.scale(guy,(100,100))
-def send_message(user_window, sprite):
-
-    pass
-
-def click_button(button):
-
-    pass
-
-
 
 # HELP ME! HEEELP!
 def main_menu():

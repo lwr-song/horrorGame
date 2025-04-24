@@ -45,3 +45,6 @@ class Goober:
         self.window = window
         window.blit(self.sprite, (400,200))
 
+    #def clicked(self):
+
+

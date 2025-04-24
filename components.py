@@ -8,7 +8,7 @@ TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.t
 TF_BASIC.size = 16
 TF_BASIC.fgcolor = (0, 0, 0)
 
-TF_SUBTITLE = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
+TF_SUBTITLE = pygame.freetype.Font(os.path.join("Assets", "Fonts", "Pixelwarden-E4Yzj.ttf"))
 TF_SUBTITLE.size = 20
 TF_SUBTITLE.fgcolor = (255, 255, 255)
 
@@ -187,7 +187,7 @@ class Subtitle:
         self.start_measure = time.time()
 
     def render(self, window, position):
-        TF_SUBTITLE.fgcolor=[min(255, int(255 * (1 - self.time / self.lifespan))) for i in range(3)]
+        TF_SUBTITLE.fgcolor=[min(255, int(255 * 1 - (self.time / self.lifespan))) for i in range(3)]
         TF_SUBTITLE.render_to(window, position, self.text)
 
 
@@ -225,11 +225,10 @@ class SubtitleHolder:
         subtitles.reverse()
         for i in range(len(subtitles)):
             focus_subtitle = subtitles[i]
-            if focus_subtitle.time > 0:
-                focus_subtitle.render(
-                    window, (
-                        center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
-                        top_y + 25 * i
-                    )
-                )
+            TF_SUBTITLE.render_to(
+                window, (
+                    center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
+                    top_y + 25 * i
+                ), focus_subtitle.text
+            )
             

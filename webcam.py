@@ -1,7 +1,7 @@
 import pygame, components, os
 pygame.init()
 
-webcam_path = os.path.join("Assets", "Sprites", "UI", "webcam.png")
+WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
 
 class Webcam:
     def __init__(self, position, group=None):
@@ -60,7 +60,9 @@ class Webcam:
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
         self.subtitles.render(to_render, self.WIDTH / 2, 260)
         window.blit(to_render, self.position)
+        
         self.audio_selector.render(window, self.position)
+        self.video_selector.render(window, self.position)
 
     def mouse_click_behavior(self, x, y):
         for clickable in self.soup:
@@ -68,4 +70,4 @@ class Webcam:
 
 class WebcamDisplay:
     def __init__(self):
-        self.body = pygame.image.load(webcam_path)
+        self.body = pygame.image.load(WEBCAM_PATH)

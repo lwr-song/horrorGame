@@ -27,7 +27,8 @@ class Webcam:
              "Water Drip",
              "Screaming",
              "Glass Break"],
-            (5 + self.WIDTH, 50),
+            (5 + self.WIDTH, 60),
+            width=self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
         self.video_selector = components.Dropdown(
@@ -39,14 +40,33 @@ class Webcam:
              "Lights Off",
              "Flashing Lights"],
             (5 + self.WIDTH, 140),
+            width=self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
         self.subtitles = components.SubtitleHolder(2, do_truncation=False)
 
-        self.subtitles.add_subtitle("chicken jockey!", 4, 1)
-        self.subtitles.add_subtitle("higher priority subtitle", 2, 2)
+        self.submit_audio_button = components.Button(
+            self.WIDTH + 5,
+            self.HEIGHT - 70,
+            self.STIMULUS_WINDOW_WIDTH - 10,
+            25,
+            "submit_audio",
+            "PLAY AUDIO",
+            group=self.soup
+        )
+        self.submit_video_button = components.Button(
+            self.WIDTH + 5,
+            self.HEIGHT - 40,
+            self.STIMULUS_WINDOW_WIDTH - 10,
+            25,
+            "submit_video",
+            "PLAY VIDEO",
+            group=self.soup
+        )
 
         self._build_display()
+
+        self.active_goober = None
 
     def _build_display(self):
         components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "SELECT AUDIO PROMPT")
@@ -59,6 +79,10 @@ class Webcam:
         to_render.blit(self.display.body, (13, 33))
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
         self.subtitles.render(to_render, self.WIDTH / 2, 260)
+
+        self.submit_audio_button.render(to_render)
+        self.submit_video_button.render(to_render)
+
         window.blit(to_render, self.position)
 
         self.video_selector.render(window, self.position)
@@ -66,7 +90,9 @@ class Webcam:
 
     def mouse_click_behavior(self, x, y):
         for clickable in self.soup:
-            clickable.mouse_click_behavior(x, y, self.position)
+            response = clickable.mouse_click_behavior(x, y, self.position)
+            if response is not None:
+                print(response)
 
 class WebcamDisplay:
     def __init__(self):

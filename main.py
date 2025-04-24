@@ -1,5 +1,5 @@
 import pygame
-import sys
+import sys, time
 import components, webcam
 import goober
 
@@ -46,8 +46,13 @@ def game_loop(day):
 
     roprown = webcam.Webcam((WIDTH / 2, 50), soup)
 
+    start_frame_time = time.time()
+
     running = True
     while running:
+
+        delta_time = time.time() - start_frame_time
+        start_frame_time = time.time()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -62,7 +67,10 @@ def game_loop(day):
         roprown.render(window)
         greachure = goober.Goober(window, "greg gregffley", "Shmingus")
 
+        components.TF_HEADER.render_to(window, (0, 0), str(int(1 / max(0.00001, delta_time))))
+
         pygame.display.flip()
+        c.tick(30)
 
 
 

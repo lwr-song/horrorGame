@@ -49,7 +49,7 @@ def generate_window(width, height, header_text, header_size=20, color=(196, 196,
     return new_window
 
 
-def generate_button(width, height, shade_size=6):
+def generate_button(width, height, text, shade_size=6):
     if width < 10:
         width = 10
     if height < 10:
@@ -65,16 +65,21 @@ def generate_button(width, height, shade_size=6):
     button_body.blit(shade, (0, height - (1 + shade_size)))
     button.blit(button_body, (1, 1))
 
+    text_rect = TF_BASIC.get_rect(text)
+    TF_BASIC.render_to(button, (width / 2 - text_rect.width / 2,
+                              (height - shade_size) / 2 - text_rect.height / 2),
+                       text)
+
     return button
 
 
 class Button:
-    def __init__(self, x, y, width, height, response, shade_size=3, group=None):
+    def __init__(self, x, y, width, height, response, text, shade_size=3, group=None):
 
         if group is not None:
             group.append(self)
 
-        self.body = generate_button(width, height, shade_size)
+        self.body = generate_button(width, height, text, shade_size)
         self.width = width
         self.height = height
         self.response = response
@@ -83,10 +88,12 @@ class Button:
     def render(self, window):
         window.blit(self.body, self.position)
 
-    def mouse_click_behavior(self, x, y):
-        if (self.x < x < self.x + self.width or
-            self.y < y < self.y + self.height):
-            return self.response
+    def mouse_click_behavior(self, mx, my, relative_position=(0,0)):
+        x = self.x + relative_position[0]
+        y = self.y + relative_position[1]
+        if (x < mx < x + self.width and
+            y < my < y + self.height):
+                return self.response
 
 
 class Dropdown:
@@ -187,7 +194,7 @@ class Subtitle:
         self.start_measure = time.time()
 
     def render(self, window, position):
-        TF_SUBTITLE.fgcolor=[min(255, int(255 * 1 - (self.time / self.lifespan))) for i in range(3)]
+        TF_SUBTITLE.fgcolor=[max(0, min(255, int(255 * (1 - self.time + self.lifespan - 1)))) for i in range(3)]
         TF_SUBTITLE.render_to(window, position, self.text)
 
 
@@ -225,10 +232,11 @@ class SubtitleHolder:
         subtitles.reverse()
         for i in range(len(subtitles)):
             focus_subtitle = subtitles[i]
-            TF_SUBTITLE.render_to(
-                window, (
-                    center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
-                    top_y + 25 * i
-                ), focus_subtitle.text
-            )
+            if focus_subtitle.time > 0:
+                focus_subtitle.render(
+                    window, (
+                        center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
+                        top_y + 20 * i
+                    )
+                )
             

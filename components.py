@@ -123,11 +123,11 @@ class Dropdown:
         if group is not None:
             group.append(self)
 
-    def is_overflow(relative_position=(0, 0)):
+    def is_overflow(self, relative_position=(0, 0)):
         bottom_of_dropdown = self.y + self.HEIGHT + relative_position[1]
         return bottom_of_dropdown + self.SELECTOR_HEIGHT > 720
 
-    def render(self, relative_position=(0, 0)):
+    def render(self, window, relative_position=(0, 0)):
 
         x = self.x + relative_position[0]
         y = self.y + relative_position[1]
@@ -150,9 +150,9 @@ class Dropdown:
         if x < mx < x + self.WIDTH:
             if self.open:
                 is_overflow = self.is_overflow(relative_position)
-                if my > y + self.HEIGHT and is_overflow:
+                if my > y + self.HEIGHT and not is_overflow:
                     choice = (my - (y + self.HEIGHT)) // self.HEIGHT
-                elif my < y and not is_overflow:
+                elif my < y and is_overflow:
                     choice = len(self.options) - (y - my) // self.HEIGHT - 1
                 else:
                     choice = self.selected_option
@@ -186,6 +186,10 @@ class Subtitle:
         self.time += time.time() - self.start_measure
         self.start_measure = time.time()
 
+    def render(self, window, position):
+        TF_SUBTITLE.fgcolor=[min(255, int(255 * 1 - (self.time / self.lifespan))) for i in range(3)]
+        TF_SUBTITLE.render_to(window, position, self.text)
+
 
 class SubtitleHolder:
     def __init__(self, channels=1, do_truncation=True):
@@ -218,6 +222,7 @@ class SubtitleHolder:
                 self.subtitle_list.remove(subtitle)
 
         subtitles = self.active_subtitles
+        subtitles.reverse()
         for i in range(len(subtitles)):
             focus_subtitle = subtitles[i]
             TF_SUBTITLE.render_to(

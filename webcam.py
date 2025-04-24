@@ -41,7 +41,7 @@ class Webcam:
             (5 + self.WIDTH, 140),
             group=self.soup
         )
-        self.subtitles = components.SubtitleHolder(do_truncation=False)
+        self.subtitles = components.SubtitleHolder(2, do_truncation=False)
 
         self.subtitles.add_subtitle("chicken jockey!", 4, 1)
         self.subtitles.add_subtitle("higher priority subtitle", 2, 2)
@@ -60,9 +60,9 @@ class Webcam:
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
         self.subtitles.render(to_render, self.WIDTH / 2, 260)
         window.blit(to_render, self.position)
-        
-        self.audio_selector.render(window, self.position)
+
         self.video_selector.render(window, self.position)
+        self.audio_selector.render(window, self.position)
 
     def mouse_click_behavior(self, x, y):
         for clickable in self.soup:

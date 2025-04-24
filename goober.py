@@ -3,6 +3,8 @@
 import pygame
 import json
 import os
+import components
+import random
 
 types = ["Shminguss", "Yargle Bargle", "Dingus", "Tinky Winky", "OOOOOh"]
 behaviors = ["aggressive", "docile", "silent", "stubborn"]
@@ -18,6 +20,12 @@ pygame.init()
 
 
 names = ["grog", "greg heffley", "gregg gregffley"]
+
+def random_goober(window):
+    goober_type = random.choice(list(anomaly_data.keys()))
+    goober_name = random.choice(names)
+    goober = Goober(window, goober_name, goober_type)
+    return goober
 
 #grorganization
 #solution = "Shminguss" (specific type)
@@ -45,6 +53,7 @@ class Goober:
         self.window = window
         window.blit(self.sprite, (400,200))
 
-    #def clicked(self):
+    #def hovered(self):
+        #button = components.generate_button(20,40)
 
 

@@ -67,8 +67,9 @@ def generate_button(width, height, shade_size=6):
 
     return button
 
+
 class Button:
-    def __init__(self, x, y, width, height, response, shade_size=6, group=None):
+    def __init__(self, x, y, width, height, response, shade_size=3, group=None):
 
         if group is not None:
             group.append(self)

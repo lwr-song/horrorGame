@@ -43,5 +43,5 @@ class Goober:
         self.solution = self.specific_type["Solution"]
 
         self.window = window
-        window.blit(self.sprite, (200,200))
+        window.blit(self.sprite, (400,200))
 

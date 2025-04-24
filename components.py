@@ -187,7 +187,7 @@ class Subtitle:
         self.start_measure = time.time()
 
     def render(self, window, position):
-        TF_SUBTITLE.fgcolor=[min(255, int(255 * 1 - (self.time / self.lifespan))) for i in range(3)]
+        TF_SUBTITLE.fgcolor=[min(255, int(255 * (1 - self.time / self.lifespan))) for i in range(3)]
         TF_SUBTITLE.render_to(window, position, self.text)
 
 
@@ -225,10 +225,11 @@ class SubtitleHolder:
         subtitles.reverse()
         for i in range(len(subtitles)):
             focus_subtitle = subtitles[i]
-            TF_SUBTITLE.render_to(
-                window, (
-                    center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
-                    top_y + 25 * i
-                ), focus_subtitle.text
-            )
+            if focus_subtitle.time > 0:
+                focus_subtitle.render(
+                    window, (
+                        center_x - TF_SUBTITLE.get_rect(focus_subtitle.text).width / 2,
+                        top_y + 25 * i
+                    )
+                )
             

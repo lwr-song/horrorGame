@@ -61,7 +61,10 @@ def game_loop(day):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 for clickable in soup:
-                    clickable.mouse_click_behavior(x, y)
+                    response = clickable.mouse_click_behavior(x, y)
+                    print(response)
+                    if response is not None:
+                        break
 
         window.fill((0, 0, 0))
         roprown.render(window)

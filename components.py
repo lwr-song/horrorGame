@@ -174,6 +174,9 @@ class Dropdown:
 
         return None
 
+    @property
+    def selection(self):
+        return self.options[self.selected_option]
 
 class Subtitle:
     def __init__(self, text, lifespan, priority=0, offset=0):

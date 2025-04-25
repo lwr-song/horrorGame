@@ -1,7 +1,8 @@
-import pygame, components, os
+import pygame, components, os, goober
 pygame.init()
 
 WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
+WEBCAM_SIZE = (325, 210)
 
 class Webcam:
     def __init__(self, position, group=None):
@@ -66,8 +67,6 @@ class Webcam:
 
         self._build_display()
 
-        self.active_goober = None
-
     def _build_display(self):
         components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "SELECT AUDIO PROMPT")
         components.TF_BASIC.render_to(self.stimulus_window, (5, 110), "SELECT VIDEO PROMPT")
@@ -76,6 +75,7 @@ class Webcam:
 
         to_render = pygame.Surface((self.WIDTH + self.STIMULUS_WINDOW_WIDTH, self.HEIGHT))
         to_render.blit(self.body, (0, 0))
+        #self.display.render((13, 13), self.position)
         to_render.blit(self.display.body, (13, 33))
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
         self.subtitles.render(to_render, self.WIDTH / 2, 260)
@@ -91,9 +91,34 @@ class Webcam:
     def mouse_click_behavior(self, x, y):
         for clickable in self.soup:
             response = clickable.mouse_click_behavior(x, y, self.position)
-            if response is not None:
-                print(response)
+
+            match response:
+                case "submit_video":
+                    print(self.video_selector.selection)
+                case "submit_audio":
+                    print(self.audio_selector.selection)
+
+            if (response is not None):
+                return True
+
 
 class WebcamDisplay:
     def __init__(self):
         self.body = pygame.image.load(WEBCAM_PATH)
+        self.active_goober = None
+"""
+        self.load_goober()
+
+    def load_goober(self):
+        self.active_goober = goober.random_goober(window)
+
+    def render(self, x, y, relative_position=(0,0)):
+        x += relative_position[0]
+        y += relative_position[1]
+
+        self.to_render = pygame.Surface(WEBCAM_SIZE)
+        self.to_render.blit(self.body, (0, 0))
+        self.to_render.blit(self.active_goober.sprite, (0, 0))
+
+        self.active_goober.render()
+"""

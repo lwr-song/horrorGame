@@ -44,6 +44,20 @@ class Webcam:
             width=self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
+        #unfinished type selector
+        self.type_selector = components.Dropdown(
+            ["Shmingus",
+             "Yargle Bargle",
+             "Bingle Bangle",
+             "Never Give Up",
+             "po",
+             "greg heffley",
+             "aurghhh"],
+
+            (5 + self.WIDTH, 140),
+            width=self.STIMULUS_WINDOW_WIDTH - 10,
+            group=self.soup
+        )
         self.subtitles = components.SubtitleHolder(2, do_truncation=False)
 
         self.submit_audio_button = components.Button(
@@ -106,6 +120,8 @@ class WebcamDisplay:
     def __init__(self):
         self.body = pygame.image.load(WEBCAM_PATH)
         self.active_goober = None
+
+
 """
         self.load_goober()
 

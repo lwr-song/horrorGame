@@ -1,5 +1,6 @@
 # Graphical functions
 import pygame, pygame.freetype, os, time
+
 pygame.init()
 
 TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
@@ -49,7 +50,7 @@ def generate_window(width, height, header_text, header_size=20, color=(196, 196,
     return new_window
 
 
-def generate_button(width, height, text, shade_size=6):
+def generate_sprite(width, height, text, shade_size=6):
     if width < 10:
         width = 10
     if height < 10:
@@ -79,7 +80,8 @@ class Button:
         if group is not None:
             group.append(self)
 
-        self.body = generate_button(width, height, text, shade_size)
+        self.visible = True
+        self.body = generate_sprite(width, height, text, shade_size)
         self.width = width
         self.height = height
         self.response = response
@@ -94,6 +96,7 @@ class Button:
         if (x < mx < x + self.width and
             y < my < y + self.height):
                 return self.response
+
 
 
 class Dropdown:

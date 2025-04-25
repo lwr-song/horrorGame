@@ -68,7 +68,7 @@ def game_loop(day):
 
         window.fill((0, 0, 0))
         roprown.render(window)
-        greachure = goober.Goober(window, "greg gregffley", "Shmingus")
+        greachure = goober.Goober(window, "greg gregffley", "Shmingus",(400,200))
 
         components.TF_HEADER.render_to(window, (0, 0), str(int(1 / max(0.00001, delta_time))))
 

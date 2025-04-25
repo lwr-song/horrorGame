@@ -34,13 +34,14 @@ def random_goober(window):
 #Visual = {"Mirror": 5, "Picture": 5, "Drawing": 90,  "Sky": 80, "Color":70, "LightsOff":5, "FlashingLights": 10}
 #size = (width, height)
 #
+
 class Goober:
 
-    def __init__(self, window, name, specific_type):
+    def __init__(self, window, name, specific_type, position ):
         self.specific_type = anomaly_data[specific_type]
         self.behavior = self.specific_type["Behavior"]
         self.name = name
-
+        self.position = position
 
         self.sprite = pygame.image.load( os.path.join("Assets","Sprites","Goober", self.specific_type["Sprite"] ))
 
@@ -50,10 +51,13 @@ class Goober:
         self.responses = behavior_data[self.behavior]
         self.solution = self.specific_type["Solution"]
 
+
+
         self.window = window
-        window.blit(self.sprite, (400,200))
+        window.blit(self.sprite, position)
 
-    #def hovered(self):
-        #button = components.generate_button(20,40)
 
+   # def hovered(self, window, mouse_pos):
+       # position = pygame.mouse.get_pos()
+       # if mouse_pos.
 

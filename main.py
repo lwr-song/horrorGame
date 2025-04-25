@@ -62,7 +62,7 @@ def game_loop(day):
                 x, y = pygame.mouse.get_pos()
                 for clickable in soup:
                     response = clickable.mouse_click_behavior(x, y)
-                    print(response)
+
                     if response is not None:
                         break
 

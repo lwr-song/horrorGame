@@ -29,7 +29,7 @@ class Webcam:
              "Screaming",
              "Glass Break"],
             (5 + self.WIDTH, 60),
-            width=self.STIMULUS_WINDOW_WIDTH - 10,
+            self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
         self.video_selector = components.Dropdown(
@@ -41,7 +41,7 @@ class Webcam:
              "Lights Off",
              "Flashing Lights"],
             (5 + self.WIDTH, 140),
-            width=self.STIMULUS_WINDOW_WIDTH - 10,
+            self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
         #unfinished type selector
@@ -112,7 +112,7 @@ class Webcam:
                 case "submit_audio":
                     print(self.audio_selector.selection)
 
-            if (response is not None):
+            if response is not None:
                 return True
 
 

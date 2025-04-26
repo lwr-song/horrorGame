@@ -7,6 +7,7 @@ WEBCAM_SIZE = (325, 210)
 class Webcam:
     def __init__(self, position, group=None):
 
+        # The Webcam has clickable components, so it needs to be in a group (Soup)
         if group is not None:
             group.append(self)
 
@@ -15,11 +16,12 @@ class Webcam:
         self.STIMULUS_WINDOW_WIDTH = 200
         self.position = (position[0] - (self.WIDTH + self.STIMULUS_WINDOW_WIDTH) / 2, position[1])
 
-        self.body = components.generate_window(self.WIDTH, self.HEIGHT, "webcam", color=(0, 0, 0))
+        self.body = components.generate_window_sprite(self.WIDTH, self.HEIGHT, "webcam", color=(0, 0, 0))
         self.display = WebcamDisplay()
-        self.stimulus_window = components.generate_window(self.STIMULUS_WINDOW_WIDTH, self.HEIGHT, "prompt")
+        self.stimulus_window = components.generate_window_sprite(self.STIMULUS_WINDOW_WIDTH, self.HEIGHT, "prompt")
         self.soup = []
 
+        # Dropdown for selecting an audio stimulus
         self.audio_selector = components.Dropdown(
             ["Bird Chirp",
              "Knocking",
@@ -32,6 +34,8 @@ class Webcam:
             self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
+
+        # Dropdown for selecting a visual stimulus
         self.video_selector = components.Dropdown(
             ["Mirror",
              "Family Picture",
@@ -44,6 +48,7 @@ class Webcam:
             self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
+
         #unfinished type selector
         self.type_selector = components.Dropdown(
             ["Shmingus",
@@ -58,8 +63,11 @@ class Webcam:
             width=self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
+
+        # Subtitle holder
         self.subtitles = components.SubtitleHolder(2, do_truncation=False)
 
+        # Button for submitting audio stumulus
         self.submit_audio_button = components.Button(
             self.WIDTH + 5,
             self.HEIGHT - 70,
@@ -69,6 +77,8 @@ class Webcam:
             "PLAY AUDIO",
             group=self.soup
         )
+
+        # Button for submitting visual stimulus
         self.submit_video_button = components.Button(
             self.WIDTH + 5,
             self.HEIGHT - 40,
@@ -82,6 +92,9 @@ class Webcam:
         self._build_display()
 
     def _build_display(self):
+
+        # Furnishes the window with text and the like
+        # Just to avoid overcrowding
         components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "SELECT AUDIO PROMPT")
         components.TF_BASIC.render_to(self.stimulus_window, (5, 110), "SELECT VIDEO PROMPT")
 

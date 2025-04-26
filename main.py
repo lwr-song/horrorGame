@@ -20,6 +20,8 @@ HEIGHT = 720
 window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
 
+# A soup is a list of clickable objects (It stands for sprite group)
+# I could just use normal Pygame sprite groups but sunk cost fallacy or whatever
 soup = []
 
 guy = pygame.transform.scale(guy,(100,100))
@@ -70,6 +72,7 @@ def game_loop(day):
         roprown.render(window)
         greachure = goober.Goober(window, "greg gregffley", "Shmingus",(400,200))
 
+        # FPS counter
         components.TF_HEADER.render_to(window, (0, 0), str(int(1 / max(0.00001, delta_time))))
 
         pygame.display.flip()

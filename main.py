@@ -46,7 +46,10 @@ def main_menu():
 
 def game_loop(day):
 
-    roprown = webcam.Webcam((WIDTH / 2, 50), soup)
+
+
+
+    roprown = webcam.Webcam((WIDTH / 2, 50), window, soup)
 
     start_frame_time = time.time()
 
@@ -70,7 +73,7 @@ def game_loop(day):
 
         window.fill((0, 0, 0))
         roprown.render(window)
-        greachure = goober.Goober(window, "greg gregffley", "Shmingus",(400,200))
+        #greachure = goober.Goober(window, "greg gregffley", "Shmingus",(400,200))
 
         # FPS counter
         components.TF_HEADER.render_to(window, (0, 0), str(int(1 / max(0.00001, delta_time))))

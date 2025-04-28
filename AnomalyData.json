@@ -1,14 +1,14 @@
 {
   "Yargle Bargle": {
     "Sprite": "the greechure.png",
-    "Size": [400,400] ,
+    "Size": [100,100] ,
     "Behavior": "Aggressive",
     "Solution": "Run your bathtub for twelve hours"
   },
 
   "po": {
     "Sprite": "the greechure.png",
-    "Size": [400,400] ,
+    "Size": [100,100] ,
     "Behavior": "Docile",
     "Solution": "You have to hit it with a broom five times."
   },
@@ -22,7 +22,7 @@
 
   "grog": {
     "Sprite": "the greechure.png",
-    "Size": [400,400] ,
+    "Size": [100,100] ,
     "Behavior": "Stubborn",
     "Solution": "You have to play clock ticking sounds for six hours."
   }

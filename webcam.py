@@ -5,7 +5,7 @@ WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
 WEBCAM_SIZE = (325, 210)
 
 class Webcam:
-    def __init__(self, position, group=None):
+    def __init__(self, position,window, group=None):
 
         # The Webcam has clickable components, so it needs to be in a group (Soup)
         if group is not None:
@@ -16,8 +16,9 @@ class Webcam:
         self.STIMULUS_WINDOW_WIDTH = 200
         self.position = (position[0] - (self.WIDTH + self.STIMULUS_WINDOW_WIDTH) / 2, position[1])
 
+
         self.body = components.generate_window_sprite(self.WIDTH, self.HEIGHT, "webcam", color=(0, 0, 0))
-        self.display = WebcamDisplay()
+
         self.stimulus_window = components.generate_window_sprite(self.STIMULUS_WINDOW_WIDTH, self.HEIGHT, "prompt")
         self.soup = []
 
@@ -98,7 +99,7 @@ class Webcam:
             "SUBMIT TYPE",
             group=self.soup
         )
-
+        self.display = WebcamDisplay(window)
         self._build_display()
 
     def _build_display(self):
@@ -125,7 +126,9 @@ class Webcam:
 
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
-        self.type_selector.render(to_render)
+        self.type_selector.render(window, self.position)
+
+        self.display.load_goober(window)
 
     def mouse_click_behavior(self, x, y):
         for clickable in self.soup:
@@ -142,24 +145,26 @@ class Webcam:
 
 
 class WebcamDisplay:
-    def __init__(self):
+    def __init__(self,window):
         self.body = pygame.image.load(WEBCAM_PATH)
         self.active_goober = None
-
-
-"""
-        self.load_goober()
-
-    def load_goober(self):
         self.active_goober = goober.random_goober(window)
 
+
+        self.load_goober(window)
+
+    def load_goober(self,window):
+
+        window.blit(self.active_goober.sprite, self.active_goober.position )
+"""
     def render(self, x, y, relative_position=(0,0)):
         x += relative_position[0]
         y += relative_position[1]
 
-        self.to_render = pygame.Surface(WEBCAM_SIZE)
-        self.to_render.blit(self.body, (0, 0))
-        self.to_render.blit(self.active_goober.sprite, (0, 0))
+        to_render = pygame.Surface(WEBCAM_SIZE)
+        to_render.blit(self.body, (0, 0))
+        to_render.blit(self.active_goober.sprite, (0, 0))
 
+        
         self.active_goober.render()
 """

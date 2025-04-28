@@ -24,7 +24,8 @@ names = ["grog", "greg heffley", "gregg gregffley"]
 def random_goober(window):
     goober_type = random.choice(list(anomaly_data.keys()))
     goober_name = random.choice(names)
-    goober = Goober(window, goober_name, goober_type)
+    goober = Goober(window, goober_name, goober_type, (400,200))
+    print(goober_name,goober_type,goober)
     return goober
 
 #grorganization
@@ -54,7 +55,7 @@ class Goober:
 
 
         self.window = window
-        window.blit(self.sprite, position)
+        #window.blit(self.sprite, position)
 
 
    # def hovered(self, window, mouse_pos):

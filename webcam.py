@@ -59,7 +59,7 @@ class Webcam:
              "greg heffley",
              "aurghhh"],
 
-            (5 + self.WIDTH, 140),
+            (5 + self.WIDTH, 200),
             width=self.STIMULUS_WINDOW_WIDTH - 10,
             group=self.soup
         )
@@ -88,6 +88,16 @@ class Webcam:
             "PLAY VIDEO",
             group=self.soup
         )
+        # Button for submitting type
+        self.submit_type_button = components.Button(
+            self.WIDTH + 5,
+            self.HEIGHT - 10,
+            self.STIMULUS_WINDOW_WIDTH - 10,
+            25,
+            "submit_type",
+            "SUBMIT TYPE",
+            group=self.soup
+        )
 
         self._build_display()
 
@@ -109,11 +119,13 @@ class Webcam:
 
         self.submit_audio_button.render(to_render)
         self.submit_video_button.render(to_render)
+        self.submit_type_button.render(to_render)
 
         window.blit(to_render, self.position)
 
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
+        self.type_selector.render(to_render)
 
     def mouse_click_behavior(self, x, y):
         for clickable in self.soup:

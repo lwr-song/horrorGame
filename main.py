@@ -30,7 +30,7 @@ guy = pygame.transform.scale(guy,(100,100))
 def main_menu():
     window.blit(guy,(0,0))
 
-    b = components.generate_window(WIDTH / 2, 300, "Woke")
+    #b = components.generate_window(WIDTH / 2, 300, "Woke")
 
     running = True
     while running:
@@ -39,7 +39,7 @@ def main_menu():
             if event.type == pygame.QUIT:
                 sys.exit()
 
-        window.blit(b, (0, 0))
+
         pygame.display.flip()
         c.tick(30)
 
@@ -72,7 +72,7 @@ def game_loop(day):
         window.fill((0, 0, 0))
         webcam_window.render(window)
         anomaly_selector.render(window)
-        #greachure = goober.Goober(window, "greg gregffley", "Shmingus",(400,200))
+
 
         # FPS counter
         components.TF_HEADER.render_to(window, (0, 0), str(int(1 / max(0.00001, delta_time))))
@@ -83,3 +83,4 @@ def game_loop(day):
 
 
 game_loop(1)
+#def entirety_loop():

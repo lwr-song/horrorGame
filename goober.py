@@ -28,6 +28,8 @@ def random_goober(window):
     print(goober_name,goober_type,goober)
     return goober
 
+
+
 #grorganization
 #solution = "Shminguss" (specific type)
 #behavior example:

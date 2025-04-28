@@ -124,6 +124,7 @@ class Webcam:
 
         window.blit(to_render, self.position)
 
+        self.type_selector.render(window, self.position)
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
         self.type_selector.render(window, self.position)
@@ -138,7 +139,10 @@ class Webcam:
                 case "submit_video":
                     print(self.video_selector.selection)
                 case "submit_audio":
-                    print(self.audio_selector.selection)
+                    audio_selection = self.audio_selector.selection
+                    self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
+                case "submit_type":
+                    print(self.type_selector.selection)
 
             if response is not None:
                 return True

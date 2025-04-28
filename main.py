@@ -1,6 +1,6 @@
 import pygame
 import sys, time
-import components, webcam
+import components, webcam, goober_selector
 import goober
 
 
@@ -46,10 +46,8 @@ def main_menu():
 
 def game_loop(day):
 
-
-
-
-    roprown = webcam.Webcam((WIDTH / 2, 50), window, soup)
+    webcam_window = webcam.Webcam((WIDTH / 2, 50), window, soup)
+    anomaly_selector = goober_selector.GooberSelector()
 
     start_frame_time = time.time()
 
@@ -72,7 +70,8 @@ def game_loop(day):
                         break
 
         window.fill((0, 0, 0))
-        roprown.render(window)
+        webcam_window.render(window)
+        anomaly_selector.render(window)
         #greachure = goober.Goober(window, "greg gregffley", "Shmingus",(400,200))
 
         # FPS counter

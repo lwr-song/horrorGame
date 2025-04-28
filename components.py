@@ -12,7 +12,7 @@ TF_BASIC.size = 16
 TF_BASIC.fgcolor = (0, 0, 0)
 
 # Text font used for subtitles, which is drawn on the webcam window
-TF_SUBTITLE = pygame.freetype.Font(os.path.join("Assets", "Fonts", "Pixelwarden-E4Yzj.ttf"))
+TF_SUBTITLE = pygame.freetype.Font(os.path.join("Assets", "Fonts", "CiGamedevRegular-ovq3z.ttf"))
 TF_SUBTITLE.size = 20
 TF_SUBTITLE.fgcolor = (255, 255, 255)
 
@@ -204,8 +204,10 @@ class Dropdown:
                 if 0 <= choice < len(self.options):
                     self.selected_option = choice
                 self.open = False
+                return True
             elif y < my < y + self.HEIGHT:
                 self.open = not self.open
+                return True
         else:
             self.open = False
 

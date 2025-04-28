@@ -127,7 +127,6 @@ class Webcam:
         self.type_selector.render(window, self.position)
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
-        self.type_selector.render(window, self.position)
 
         self.display.load_goober(window)
 

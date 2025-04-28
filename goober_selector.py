@@ -13,3 +13,4 @@ class ScrollingMenu:
     def __init__(self, options, position):
         self.options = options
         self.selected_option = 0
+

@@ -127,7 +127,6 @@ class Webcam:
         self.type_selector.render(window, self.position)
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
-        self.type_selector.render(window, self.position)
 
         self.display.load_goober(window)
 
@@ -142,7 +141,12 @@ class Webcam:
                     audio_selection = self.audio_selector.selection
                     self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
                 case "submit_type":
-                    print(self.type_selector.selection)
+                    type_selection = self.type_selector.selection
+                    print(self.display.active_goober.name)
+                    if self.display.active_goober.specific_type == type_selection:
+                        print("GREAT JOB!!")
+                    else:
+                        print("KILL YOURSELF!!!")
 
             if response is not None:
                 return True

@@ -148,7 +148,7 @@ class Dropdown:
         if group is not None:
             group.append(self)
 
-    # Returns whether or not the dropdown menu would overflow off of the screen if it was opened
+    # Returns whether the dropdown menu would overflow off of the screen if it was opened
     def is_overflow(self, relative_position=(0, 0)):
         bottom_of_dropdown = self.y + self.HEIGHT + relative_position[1]
 

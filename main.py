@@ -21,16 +21,32 @@ window = pygame.display.set_mode([WIDTH, HEIGHT])
 c = pygame.time.Clock()
 
 # A soup is a list of clickable objects (It stands for sprite group)
+# soap stands for sprite Ohwow AwesomePicture
+# CINEMA
 # I could just use normal Pygame sprite groups but sunk cost fallacy or whatever
 soup = []
 
-guy = pygame.transform.scale(guy,(100,100))
+
+guy = pygame.transform.scale(guy,(400,400))
 
 # HELP ME! HEEELP!
 def main_menu():
-    window.blit(guy,(0,0))
+    main_menu_soap = []
+    window.blit(guy,(200,200))
 
     #b = components.generate_window(WIDTH / 2, 300, "Woke")
+
+    #Make buttons
+    x = 100
+    y = 100
+    width = 100
+    height = 30
+
+    play_button = components.Button(x, y, width, height, "gameplay loop", "Play", 3, main_menu_soap)
+    tutorial_button = components.Button(x, y + 50, width, height, "tutorial loop", "Tutorial", 3 ,main_menu_soap )
+
+    main_menu_soap += [play_button,tutorial_button]
+
 
     running = True
     while running:
@@ -38,7 +54,20 @@ def main_menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                x, y = pygame.mouse.get_pos()
+                for clickable in main_menu_soap:
+                    response = clickable.mouse_click_behavior(x, y)
+                    match response:
+                        case "gameplay loop":
+                            game_loop(1)
+                        case "tutorial loop":
+                            print("YAYY")
+                    if response is not None:
+                        break
 
+        for thing in main_menu_soap:
+            thing.render(window)
 
         pygame.display.flip()
         c.tick(30)
@@ -66,6 +95,7 @@ def game_loop(day):
                 for clickable in soup:
                     response = clickable.mouse_click_behavior(x, y)
 
+
                     if response is not None:
                         break
 
@@ -82,5 +112,6 @@ def game_loop(day):
 
 
 
-game_loop(1)
+#game_loop(1)
 #def entirety_loop():
+main_menu()

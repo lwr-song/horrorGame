@@ -46,21 +46,17 @@ class Goober:
         self.name = name
         self.position = position
 
-        self.sprite = pygame.image.load( os.path.join("Assets","Sprites","Goober", self.specific_type["Sprite"] ))
+        print(self.behavior)
 
+        self.sprite = pygame.image.load(os.path.join("Assets", "Sprites", "Goober", self.specific_type["Sprite"]))
         self.sprite = pygame.transform.scale(self.sprite, self.specific_type["Size"])
-
 
         self.responses = behavior_data[self.behavior]
         self.solution = self.specific_type["Solution"]
 
-
-
         self.window = window
         #window.blit(self.sprite, position)
-
 
    # def hovered(self, window, mouse_pos):
        # position = pygame.mouse.get_pos()
        # if mouse_pos.
-

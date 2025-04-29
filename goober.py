@@ -24,7 +24,7 @@ names = ["grog", "greg heffley", "gregg gregffley"]
 def random_goober(window):
     goober_type = random.choice(list(anomaly_data.keys()))
     goober_name = random.choice(names)
-    goober = Goober(window, goober_name, goober_type, (400,200))
+    goober = Goober(window, goober_name, goober_type, (330, 70))
     print(goober_name,goober_type,goober)
     return goober
 

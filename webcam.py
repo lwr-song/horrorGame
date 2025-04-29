@@ -151,7 +151,7 @@ class Webcam:
             if response is not None:
                 return True
 
-
+# TODO: make window uh bigger :D yayyy yayyy ya y ay yyy
 class WebcamDisplay:
     def __init__(self,window):
         self.body = pygame.image.load(WEBCAM_PATH)

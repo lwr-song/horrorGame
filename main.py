@@ -60,9 +60,11 @@ def main_menu():
                     response = clickable.mouse_click_behavior(x, y)
                     match response:
                         case "gameplay loop":
-                            game_loop(1)
+                            prelude_loop()
+
                         case "tutorial loop":
                             print("YAYY")
+
                     if response is not None:
                         break
 
@@ -73,7 +75,11 @@ def main_menu():
         c.tick(30)
 
 
-def game_loop(day):
+
+def prelude_loop():
+    print("PLEEEASE HELP MEEE")
+    game_loop()
+def game_loop():
 
     webcam_window = webcam.Webcam((WIDTH / 2, 50), window, soup)
     anomaly_selector = goober_selector.GooberSelector()

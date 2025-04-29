@@ -4,36 +4,36 @@
     "Sound": {"Bird Chirp" :false,
       "Knocking": true,
       "Baby Crying": true,
-      "Wind": false,
-      "Water Drip": true,
-      "Screaming": true,
-      "Glass Break": false},
+      "Wind": true,
+      "Water Drip": false,
+      "Screaming": false,
+      "Glass Break": true},
 
-    "Visual": {"Mirror": false,
+    "Visual": {"Mirror": true,
       "Family Picture": true,
-      "Drawing": false,
-      "Sky": true,
+      "Drawing": true,
+      "Sky": false,
       "Colored Lights": false,
-      "Lights Off": true,
+      "Lights Off": false,
       "Flashing Lights": true}
   },
   "Docile": {
 
-    "Sound": {"Bird Chirp" :false,
-      "Knocking": true,
-      "Baby Crying": true,
+    "Sound": {"Bird Chirp" :true,
+      "Knocking": false,
+      "Baby Crying": false,
       "Wind": false,
       "Water Drip": true,
-      "Screaming": true,
-      "Glass Break": false},
+      "Screaming": false,
+      "Glass Break": true},
 
     "Visual": {"Mirror": false,
-      "Family Picture": true,
-      "Drawing": false,
+      "Family Picture": false,
+      "Drawing": true,
       "Sky": true,
-      "Colored Lights": false,
-      "Lights Off": true,
-      "Flashing Lights": true}
+      "Colored Lights": true,
+      "Lights Off": false,
+      "Flashing Lights": false}
   },
   "Silent": {
 
@@ -55,21 +55,21 @@
   },
   "Stubborn": {
 
-    "Sound": {"Bird Chirp" :false,
-      "Knocking": true,
-      "Baby Crying": true,
-      "Wind": false,
-      "Water Drip": true,
+    "Sound": {"Bird Chirp" :true,
+      "Knocking": false,
+      "Baby Crying": false,
+      "Wind": true,
+      "Water Drip": false,
       "Screaming": true,
       "Glass Break": false},
 
-    "Visual": {"Mirror": false,
-      "Family Picture": true,
+    "Visual": {"Mirror": true,
+      "Family Picture": false,
       "Drawing": false,
-      "Sky": true,
-      "Colored Lights": false,
+      "Sky": false,
+      "Colored Lights": true,
       "Lights Off": true,
-      "Flashing Lights": true}
+      "Flashing Lights": false}
   }
 
 }

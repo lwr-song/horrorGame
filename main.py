@@ -39,11 +39,11 @@ def main_menu():
     #Make buttons
     x = 100
     y = 100
-    width = 100
-    height = 30
+    width = 800
+    height = 100
 
     play_button = components.Button(x, y, width, height, "gameplay loop", "Play", 3, main_menu_soap)
-    tutorial_button = components.Button(x, y + 50, width, height, "tutorial loop", "Tutorial", 3 ,main_menu_soap )
+    tutorial_button = components.Button(x, y + 250, width, height, "tutorial loop", "Tutorial", 3 ,main_menu_soap )
 
     main_menu_soap += [play_button,tutorial_button]
 

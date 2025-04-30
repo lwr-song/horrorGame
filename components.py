@@ -3,17 +3,22 @@ import pygame, pygame.freetype, os, time
 
 pygame.init()
 
+# Default font sizes
+TF_HEADER_DEFAULT_SIZE = 20
+TF_BASIC_DEFAULT_SIZE = 16
+TF_SUBTITLE_DEFAULT_SIZE = 20
+
 # Text font used for window headers
 TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
 
 # Text font used for basic window text (such as the text on the stimulus selection window)
 TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
-TF_BASIC.size = 16
+TF_BASIC.size = TF_BASIC_DEFAULT_SIZE
 TF_BASIC.fgcolor = (0, 0, 0)
 
 # Text font used for subtitles, which is drawn on the webcam window
 TF_SUBTITLE = pygame.freetype.Font(os.path.join("Assets", "Fonts", "CiGamedevRegular-ovq3z.ttf"))
-TF_SUBTITLE.size = 20
+TF_SUBTITLE.size = TF_SUBTITLE_DEFAULT_SIZE
 TF_SUBTITLE.fgcolor = (255, 255, 255)
 
 DROPDOWN_ARROW = pygame.image.load(os.path.join("Assets", "Sprites", "UI", "dropdown_down_arrow.png"))
@@ -55,7 +60,7 @@ def generate_window_sprite(width, height, header_text, header_size=20, color=(19
 
 
 # Generates the sprite used for the button
-def generate_button_sprite(width, height, text, shade_size=6):
+def generate_button_sprite(width, height, text, text_size, shade_size=6):
 
     # Limiting parameters
     if width < 10:
@@ -74,6 +79,8 @@ def generate_button_sprite(width, height, text, shade_size=6):
     button_body.blit(shade, (0, height - (1 + shade_size)))
     button.blit(button_body, (1, 1))
 
+    TF_BASIC.size = text_size
+
     # Drawing text on the button
     text_rect = TF_BASIC.get_rect(text)
 
@@ -82,19 +89,21 @@ def generate_button_sprite(width, height, text, shade_size=6):
                               (height - shade_size) / 2 - text_rect.height / 2),
                        text)
 
+    TF_BASIC.size = TF_BASIC_DEFAULT_SIZE
+    
     return button
 
 
 # Button class
 class Button:
-    def __init__(self, x, y, width, height, response, text, shade_size=3, group=None):
+    def __init__(self, x, y, width, height, response, text, text_size=TF_BASIC_DEFAULT_SIZE, shade_size=3, group=None):
 
         # This class is clickable, so it should be in a group (Soup)
         if group is not None:
             group.append(self)
 
         self.visible = True
-        self.body = generate_button_sprite(width, height, text, shade_size)
+        self.body = generate_button_sprite(width, height, text, text_size, shade_size)
         self.width = width
         self.height = height
         self.response = response # This response will be returned when this button is pressed

@@ -75,8 +75,11 @@ def generate_button_sprite(width, height, text, text_size, shade_size=6):
     button_body.fill((196, 196, 216))
     shade = pygame.Surface((width - 2, shade_size))
     shade.fill((128, 128, 144))
+    highlight = pygame.Surface((width - 2, shade_size))
+    highlight.fill((236, 236, 255))
 
     button_body.blit(shade, (0, height - (1 + shade_size)))
+    button_body.blit(highlight, (0, 1))
     button.blit(button_body, (1, 1))
 
     TF_BASIC.size = text_size

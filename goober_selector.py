@@ -28,10 +28,10 @@ class GooberSelector:
             400,
             self.HEIGHT - 40,
             250,
-            30,
+            35,
             "submit_type",
             "Submit Type",
-            text_size=20
+            text_size=16
         )
 
         self.selected_option = None

@@ -74,8 +74,6 @@ def main_menu():
         pygame.display.flip()
         c.tick(30)
 
-
-
 def prelude_loop():
     running = True
     dialogue = ["I heard you're the new Identifier.",

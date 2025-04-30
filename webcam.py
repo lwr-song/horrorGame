@@ -54,9 +54,9 @@ class Webcam:
         # Button for submitting audio stumulus
         self.submit_audio_button = components.Button(
             self.WIDTH + 5,
-            self.HEIGHT - 70,
+            self.HEIGHT - 100,
             self.STIMULUS_WINDOW_WIDTH - 10,
-            25,
+            35,
             "submit_audio",
             "Play Audio",
             group=self.soup
@@ -65,9 +65,9 @@ class Webcam:
         # Button for submitting visual stimulus
         self.submit_video_button = components.Button(
             self.WIDTH + 5,
-            self.HEIGHT - 40,
+            self.HEIGHT - 50,
             self.STIMULUS_WINDOW_WIDTH - 10,
-            25,
+            35,
             "submit_video",
             "Play Video",
             group=self.soup

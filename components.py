@@ -96,7 +96,7 @@ def generate_button_sprite(width, height, text, text_size, shade_size=6):
 
 # Button class
 class Button:
-    def __init__(self, x, y, width, height, response, text, text_size=TF_BASIC_DEFAULT_SIZE, shade_size=3, group=None):
+    def __init__(self, x, y, width, height, response, text, shade_size=3, group=None, text_size=TF_BASIC_DEFAULT_SIZE):
 
         # This class is clickable, so it should be in a group (Soup)
         if group is not None:

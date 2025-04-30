@@ -82,7 +82,7 @@ def prelude_loop():
 def game_loop():
 
     webcam_window = webcam.Webcam((WIDTH / 2, 50), window, soup)
-    anomaly_selector = goober_selector.GooberSelector()
+    anomaly_selector = goober_selector.GooberSelector(soup)
 
     start_frame_time = time.time()
 

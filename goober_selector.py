@@ -19,17 +19,41 @@ class GooberSelector:
             "option " + str(i) for i in range(10)
         ], self.HEIGHT - 70)
 
+        # Building currently selected crucible
+        selection_display_rect = pygame.Rect(1080 - OPTION_WIDTH - 24, self.HEIGHT - 40, OPTION_WIDTH, 30)
+        pygame.draw.rect(self.body, (236, 236, 255), selection_display_rect)
+
+        # Button for submitting type
+        self.submit_type_button = components.Button(
+            400,
+            self.HEIGHT - 40,
+            250,
+            30,
+            "submit_type",
+            "Submit Type",
+            text_size=20
+        )
+
+        self.selected_option = None
+
     def render(self, window):
+        position = (0, 720 - self.HEIGHT)
         to_render = pygame.Surface((1080, self.HEIGHT))
         to_render.blit(self.body, (0, 0))
+
+        if self.selected_option is not None:
+            components.TF_BASIC.render_to(to_render, (1080 - OPTION_WIDTH - 19, self.HEIGHT - 30), self.selected_option)
+
         self.scrolling_menu.render(to_render, (1080 - OPTION_WIDTH - 24, 20))
 
-        window.blit(to_render, (0, 720 - self.HEIGHT))
+        self.submit_type_button.render(to_render)
+
+        window.blit(to_render, position)
 
     def mouse_click_behavior(self, mx, my):
         response = self.scrolling_menu.mouse_click_behavior(mx, my, (1080 - OPTION_WIDTH - 24, 740 - self.HEIGHT))
         if response is not None:
-            print(response)
+            self.selected_option = response
         
 
 

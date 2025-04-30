@@ -12,7 +12,7 @@ TF_SUBTITLE_DEFAULT_SIZE = 20
 TF_HEADER = pygame.freetype.Font(os.path.join("Assets", "Fonts", "PixelDigivolve-mOm9.ttf"))
 
 # Text font used for basic window text (such as the text on the stimulus selection window)
-TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "LcdSolid-VPzB.ttf"))
+TF_BASIC = pygame.freetype.Font(os.path.join("Assets", "Fonts", "CiGamedevRegular-ovq3z.ttf"))
 TF_BASIC.size = TF_BASIC_DEFAULT_SIZE
 TF_BASIC.fgcolor = (0, 0, 0)
 

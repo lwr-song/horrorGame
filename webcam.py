@@ -2,23 +2,21 @@ import pygame, components, os, goober
 pygame.init()
 
 WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
-WEBCAM_SIZE = (325, 210)
+WEBCAM_SIZE = (650, 420)
 
 class Webcam:
-    def __init__(self, position,window, group=None):
+    def __init__(self, position, window, group=None):
 
         # The Webcam has clickable components, so it needs to be in a group (Soup)
         if group is not None:
             group.append(self)
 
-        self.WIDTH = 350 # PLease
-        self.HEIGHT = 350
+        self.WIDTH = 700 # PLease
+        self.HEIGHT = 430
         self.STIMULUS_WINDOW_WIDTH = 200
         self.position = (position[0] - (self.WIDTH + self.STIMULUS_WINDOW_WIDTH) / 2, position[1])
 
-
         self.body = components.generate_window_sprite(self.WIDTH, self.HEIGHT, "webcam", color=(0, 0, 0))
-
         self.stimulus_window = components.generate_window_sprite(self.STIMULUS_WINDOW_WIDTH, self.HEIGHT, "prompt")
         self.soup = []
 
@@ -50,21 +48,6 @@ class Webcam:
             group=self.soup
         )
 
-        #unfinished type selector
-        self.type_selector = components.Dropdown(
-            ["Shmingus",
-             "Yargle Bargle",
-             "Bingle Bangle",
-             "Never Give Up",
-             "po",
-             "greg heffley",
-             "aurghhh"],
-
-            (5 + self.WIDTH, 200),
-            width=self.STIMULUS_WINDOW_WIDTH - 10,
-            group=self.soup
-        )
-
         # Subtitle holder
         self.subtitles = components.SubtitleHolder(2, do_truncation=False)
 
@@ -75,7 +58,7 @@ class Webcam:
             self.STIMULUS_WINDOW_WIDTH - 10,
             25,
             "submit_audio",
-            "PLAY AUDIO",
+            "Play Audio",
             group=self.soup
         )
 
@@ -86,19 +69,10 @@ class Webcam:
             self.STIMULUS_WINDOW_WIDTH - 10,
             25,
             "submit_video",
-            "PLAY VIDEO",
+            "Play Video",
             group=self.soup
         )
-        # Button for submitting type
-        self.submit_type_button = components.Button(
-            self.WIDTH + 5,
-            self.HEIGHT - 10,
-            self.STIMULUS_WINDOW_WIDTH - 10,
-            25,
-            "submit_type",
-            "SUBMIT TYPE",
-            group=self.soup
-        )
+
         self.display = WebcamDisplay(window)
         self._build_display()
 
@@ -106,8 +80,8 @@ class Webcam:
 
         # Furnishes the window with text and the like
         # Just to avoid overcrowding
-        components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "SELECT AUDIO PROMPT")
-        components.TF_BASIC.render_to(self.stimulus_window, (5, 110), "SELECT VIDEO PROMPT")
+        components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "Select Audio Prompt")
+        components.TF_BASIC.render_to(self.stimulus_window, (5, 110), "Select Video Prompt")
 
     def render(self, window):
 
@@ -116,15 +90,13 @@ class Webcam:
         #self.display.render((13, 13), self.position)
         to_render.blit(self.display.body, (13, 33))
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
-        self.subtitles.render(to_render, self.WIDTH / 2, 260)
+        self.subtitles.render(to_render, self.WIDTH / 2, 380)
 
         self.submit_audio_button.render(to_render)
         self.submit_video_button.render(to_render)
-        self.submit_type_button.render(to_render)
 
         window.blit(to_render, self.position)
 
-        self.type_selector.render(window, self.position)
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
 
@@ -158,6 +130,7 @@ class Webcam:
 class WebcamDisplay:
     def __init__(self,window):
         self.body = pygame.image.load(WEBCAM_PATH)
+        self.body = pygame.transform.scale(self.body, WEBCAM_SIZE)
         self.active_goober = None
         self.active_goober = goober.random_goober(window)
 

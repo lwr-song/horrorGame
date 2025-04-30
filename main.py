@@ -1,6 +1,6 @@
 import pygame
 import sys, time
-import components, webcam, goober_selector
+import components, webcam, goober_selector, os
 import goober
 
 
@@ -77,10 +77,38 @@ def main_menu():
 
 
 def prelude_loop():
-    print("PLEEEASE HELP MEEE")
+    running = True
+    dialogue = ["I heard you're the new Identifier.",
+                "There's an Anomaly in my attic...",
+                "Help me get it out!"]
+    window_width = 350
+    window_height = 350
+    dialogue_window = components.generate_window_sprite(window_width, window_height, "INCOMING MESSAGE")
+    sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
+    sprite = pygame.transform.scale(sprite, (50,50))
+    index = 0
+    index_max = len(dialogue)
+    while running:
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if index < index_max:
+                    print(dialogue[index])
+                    index += 1
+                else:
+                    running = False
+
+
+        window.fill((0,0,0))
+        window.blit(dialogue_window, (300,200))
+        window.blit(sprite, (300,220))
+        pygame.display.flip()
     game_loop()
 def game_loop():
-
+    window.fill((0,0,0))
     webcam_window = webcam.Webcam((WIDTH / 2, 20), window, soup)
     anomaly_selector = goober_selector.GooberSelector(soup)
 

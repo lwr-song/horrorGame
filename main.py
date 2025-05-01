@@ -127,6 +127,7 @@ def end_loop(solution, correct):
     sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
     sprite = pygame.transform.scale(sprite, (50,50))
     index = 0
+    response_index = 0
     index_max = len(dialogue)
     while running:
 
@@ -139,7 +140,11 @@ def end_loop(solution, correct):
                     print(dialogue[index])
                     index += 1
                 else:
-                    running = False
+                    if response_index < len(response):
+                        print(response[response_index])
+                        response_index += 1
+                    else:
+                        running= False
 
 
         window.fill((0,0,0))

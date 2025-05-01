@@ -159,6 +159,8 @@ def game_loop():
     window.fill((0,0,0))
     webcam_window = webcam.Webcam((WIDTH / 2, 20), window, soup)
 
+    active_goober = webcam_window.display.active_goober
+
     start_frame_time = time.time()
 
     running = True
@@ -176,10 +178,15 @@ def game_loop():
                 for clickable in soup:
                     response = clickable.mouse_click_behavior(x, y)
 
+                    match response:
+                        case "live":
+                            solution = active_goober.solution
+                            end_loop(solution, True)
+                        case "die":
+                            solution = active_goober.solution
+                            end_loop(solution, False)
 
                     if response is not None:
-                        solution, correct = response
-                        end_loop(solution, correct)
                         break
 
         window.fill((33, 75, 65))

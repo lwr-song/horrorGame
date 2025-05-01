@@ -118,13 +118,15 @@ class Webcam:
                     self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
 
                     print(self.display.active_goober.responses['Sound'][audio_selection])
+                case "submit_type":
+                    type_selection = self.anomaly_selector.selected_option
+                    if type_selection == self.display.active_goober.specific_type:
+                        return "live"
+                    else:
+                        return "die"
+
             if response is not None:
                 return response
-
-
-
-            if response is not None:
-                return True
 
 # TODO: make window uh bigger :D yayyy yayyy ya y ay yyy
 class WebcamDisplay:

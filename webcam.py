@@ -115,13 +115,7 @@ class Webcam:
 
                     print(self.display.active_goober.responses['Sound'][audio_selection])
 
-                case "submit_type":
-                    type_selection = self.type_selector.selection
-                    print(self.display.active_goober.name)
-                    if self.display.active_goober.specific_type == type_selection:
-                        print("GREAT JOB!!")
-                    else:
-                        print("KILL YOURSELF!!!")
+
 
             if response is not None:
                 return True

@@ -50,7 +50,7 @@ class GooberSelector:
 
         window.blit(to_render, position)
 
-    def mouse_click_behavior(self, mx, my):
+    def mouse_click_behavior(self, mx, my, relative_position=(0, 0)):
         response = self.scrolling_menu.mouse_click_behavior(mx, my, (1080 - OPTION_WIDTH - 24, 740 - self.HEIGHT))
         if response is not None:
             self.selected_option = response

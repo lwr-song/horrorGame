@@ -1,4 +1,4 @@
-import pygame, components, os, goober
+import pygame, components, os, goober, goober_selector
 pygame.init()
 
 WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
@@ -73,6 +73,8 @@ class Webcam:
             group=self.soup
         )
 
+        self.anomaly_selector = goober_selector.GooberSelector(self.soup)
+
         self.display = WebcamDisplay(window)
         self._build_display()
 
@@ -100,6 +102,8 @@ class Webcam:
         self.video_selector.render(window, self.position)
         self.audio_selector.render(window, self.position)
 
+        self.anomaly_selector.render(window)
+
         self.display.load_goober(window)
 
     def mouse_click_behavior(self, x, y):
@@ -114,14 +118,6 @@ class Webcam:
                     self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
 
                     print(self.display.active_goober.responses['Sound'][audio_selection])
-
-                case "submit_type":
-                    type_selection = self.type_selector.selection
-                    print(self.display.active_goober.name)
-                    if self.display.active_goober.specific_type == type_selection:
-                        print("GREAT JOB!!")
-                    else:
-                        print("KILL YOURSELF!!!")
 
             if response is not None:
                 return True

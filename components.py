@@ -51,7 +51,7 @@ def generate_window_sprite(width, height, header_text, header_size=20, color=(19
     TF_HEADER.render_to(header, (2, 2), header_text)
 
     # The main body of the window
-    window_body = pygame.Rect(2, header_size, width - 4, height - header_size - 2)
+    window_body = pygame.Rect(2, header_size, width - 4, height - 2)
 
     # Compositing the window and the header into the real window
     pygame.draw.rect(new_window, color, window_body)
@@ -192,8 +192,6 @@ class Dropdown:
     # Mouse click behavior
     def mouse_click_behavior(self, mx, my, relative_position=(0, 0)):
 
-        # Relative position represents the position of the window it is built on
-        # TODO: Refactor this so that the relative position parameter is unnecessary
         x = relative_position[0] + self.x
         y = relative_position[1] + self.y
 

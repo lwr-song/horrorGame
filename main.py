@@ -108,7 +108,6 @@ def prelude_loop():
 def game_loop():
     window.fill((0,0,0))
     webcam_window = webcam.Webcam((WIDTH / 2, 20), window, soup)
-    anomaly_selector = goober_selector.GooberSelector(soup)
 
     start_frame_time = time.time()
 
@@ -133,7 +132,6 @@ def game_loop():
 
         window.fill((33, 75, 65))
         webcam_window.render(window)
-        anomaly_selector.render(window)
 
 
         # FPS counter

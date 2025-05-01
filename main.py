@@ -31,6 +31,7 @@ guy = pygame.transform.scale(guy,(400,400))
 
 # HELP ME! HEEELP!
 def main_menu():
+    window.fill((0, 0, 0))
     main_menu_soap = []
     window.blit(guy,(200,200))
 
@@ -170,6 +171,8 @@ def game_loop():
 
 
                     if response is not None:
+                        solution, correct = response
+                        end_loop(solution, correct)
                         break
 
         window.fill((33, 75, 65))

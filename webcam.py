@@ -118,6 +118,8 @@ class Webcam:
                     self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
 
                     print(self.display.active_goober.responses['Sound'][audio_selection])
+            if response is not None:
+                return response
 
 
 

@@ -1,6 +1,7 @@
 import components
 import pygame
 import os
+
 pygame.init()
 
 OPTION = pygame.image.load(os.path.join("Assets", "Sprites", "UI", "selector_option.png"))
@@ -50,7 +51,9 @@ class GooberSelector:
 
         window.blit(to_render, position)
 
-    def mouse_click_behavior(self, mx, my, relative_position=(0, 0)):
+    def mouse_click_behavior(self, mx, my):
+        if self.submit_type_button.mouse_click_behavior(mx, my, (0, 720 - self.HEIGHT)):
+            return "die",False
         response = self.scrolling_menu.mouse_click_behavior(mx, my, (1080 - OPTION_WIDTH - 24, 740 - self.HEIGHT))
         if response is not None:
             self.selected_option = response

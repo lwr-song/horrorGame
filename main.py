@@ -107,8 +107,10 @@ def prelude_loop():
         pygame.display.flip()
     game_loop()
 
-def funeral():
-    return ["HE DIED LMAO!"]
+def funeral(solution):
+    return ["HE DIED LMAO!",
+            "Trying to.." + solution,
+            "What in tarnation. Why."]
 
 def end_loop(solution, correct):
     running = True
@@ -119,7 +121,7 @@ def end_loop(solution, correct):
         response = ["Wow! It worked.",
                     "I'll come back to you if there's another.."]
     else:
-        response = funeral()
+        response = funeral(solution)
 
     window_width = 350
     window_height = 350

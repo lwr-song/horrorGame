@@ -113,8 +113,13 @@ class Webcam:
             match response:
                 case "submit_video":
                     print(self.video_selector.selection)
+
+                    #self.display.respond_to_visual(goober_type, visual)
                 case "submit_audio":
                     audio_selection = self.audio_selector.selection
+
+                    audio = pygame.mixer.Sound(os.path.join("Assets","Audio", audio_selection + ".wav"))
+                    audio.play()
                     self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
 
                     print(self.display.active_goober.responses['Sound'][audio_selection])
@@ -142,6 +147,12 @@ class WebcamDisplay:
     def load_goober(self,window):
 
         window.blit(self.active_goober.sprite, self.active_goober.position )
+
+    def respond_to_visual(self):
+        pass
+
+    def respond_to_audio(self):
+        pass
 """
     def render(self, x, y, relative_position=(0,0)):
         x += relative_position[0]

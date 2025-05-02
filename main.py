@@ -29,6 +29,7 @@ soup = []
 
 guy = pygame.transform.scale(guy,(400,400))
 
+
 # HELP ME! HEEELP!
 def main_menu():
     window.fill((0, 0, 0))

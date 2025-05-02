@@ -120,7 +120,7 @@ class Webcam:
                     print(self.display.active_goober.responses['Sound'][audio_selection])
                 case "submit_type":
                     type_selection = self.anomaly_selector.selected_option
-                    if type_selection == self.display.active_goober.specific_type:
+                    if type_selection == self.display.active_goober.type_name:
                         return "live"
                     else:
                         return "die"

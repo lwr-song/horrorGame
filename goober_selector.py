@@ -1,12 +1,15 @@
 import components
 import pygame
-import os
+import os, json
 
 pygame.init()
 
 OPTION = pygame.image.load(os.path.join("Assets", "Sprites", "UI", "selector_option.png"))
 OPTION_HEIGHT = OPTION.get_rect().height
 OPTION_WIDTH = OPTION.get_rect().width
+
+with open("AnomalyData.json") as file:
+    anomaly_data = json.load(file)
 
 class GooberSelector:
     def __init__(self, group=None):
@@ -16,9 +19,7 @@ class GooberSelector:
 
         self.HEIGHT = 250
         self.body = components.generate_window_sprite(1080, self.HEIGHT, "SELECTOR")
-        self.scrolling_menu = ScrollingMenu([
-            "option " + str(i) for i in range(10)
-        ], self.HEIGHT - 70)
+        self.scrolling_menu = ScrollingMenu(list(anomaly_data.keys()), self.HEIGHT - 70)
 
         # Building currently selected crucible
         selection_display_rect = pygame.Rect(1080 - OPTION_WIDTH - 24, self.HEIGHT - 40, OPTION_WIDTH, 30)

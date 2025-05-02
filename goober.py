@@ -41,6 +41,7 @@ def random_goober(window):
 class Goober:
 
     def __init__(self, window, name, specific_type, position ):
+        self.type_name = specific_type
         self.specific_type = anomaly_data[specific_type]
         self.behavior = self.specific_type["Behavior"]
         self.name = name

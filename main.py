@@ -156,6 +156,7 @@ def end_loop(solution, correct):
     main_menu()
 
 def game_loop():
+    soup = []
     window.fill((0,0,0))
     webcam_window = webcam.Webcam((WIDTH / 2, 20), window, soup)
 

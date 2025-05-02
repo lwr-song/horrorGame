@@ -33,7 +33,7 @@ guy = pygame.transform.scale(guy,(400,400))
 def main_menu():
     window.fill((0, 0, 0))
     main_menu_soap = []
-    window.blit(guy,(200,200))
+    window.blit(guy,(300,100))
 
     #b = components.generate_window(WIDTH / 2, 300, "Woke")
 
@@ -114,7 +114,7 @@ def funeral(solution):
 
 def end_loop(solution, correct):
     running = True
-    dialogue = ["You want me to do what..",
+    dialogue = ["You want me to " + solution + "..what..",
                 "If you say so.",
                 "I'll check in with you tomorrow."]
     if correct:

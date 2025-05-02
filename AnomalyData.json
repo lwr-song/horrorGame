@@ -3,28 +3,32 @@
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours"
+    "Solution": "run a bathtub for twelve hours",
+    "Description": "a little goob. He is,"
   },
 
   "po": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times."
+    "Solution": "hit it with a broom five times.",
+    "Description": "Ohhh he hates the broom. He hates when you do that"
   },
 
   "Shmingus": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television."
+    "Solution": "switch to channel three on a television.",
+    "Description": "i want you so badly"
   },
 
   "grog": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours."
+    "Solution": "play clock ticking sounds for six hours.",
+    "Description": "bro was in the libray for to logn :laugh:"
   }
 
 }

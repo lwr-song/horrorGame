@@ -118,11 +118,15 @@ class Webcam:
                 case "submit_audio":
                     audio_selection = self.audio_selector.selection
 
-                    audio = pygame.mixer.Sound(os.path.join("Assets","Audio", audio_selection + ".wav"))
-                    audio.play()
+                    #audio = pygame.mixer.Sound(os.path.join("Assets","Audio", audio_selection + ".wav"))
+
+                    response = self.display.active_goober.responses['Sound'][audio_selection]
+
+                    self.display.respond_to_audio(response, audio_selection)
+
                     self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
 
-                    print(self.display.active_goober.responses['Sound'][audio_selection])
+                    print(response)
                 case "submit_type":
                     type_selection = self.anomaly_selector.selected_option
                     if type_selection == self.display.active_goober.type_name:
@@ -151,8 +155,14 @@ class WebcamDisplay:
     def respond_to_visual(self):
         pass
 
-    def respond_to_audio(self):
-        pass
+    def respond_to_audio(self, respond, audio_name):
+        audio = pygame.mixer.Sound(os.path.join("Assets", "Audio", audio_name + ".wav"))
+        if respond:
+            audio = pygame.mixer.Sound(os.path.join("Assets","Audio", "Response", audio_name + ".wav"))
+            print("yay!")
+            print(audio_name)
+
+        audio.play()
 """
     def render(self, x, y, relative_position=(0,0)):
         x += relative_position[0]

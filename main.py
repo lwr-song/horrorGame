@@ -182,6 +182,8 @@ def end_loop(solution, correct):
     main_menu()
 
 def game_loop():
+
+    # Loop for clickable objects
     soup = []
     window.fill((0,0,0))
     webcam_window = webcam.Webcam((WIDTH / 2, 20), window, soup)
@@ -193,19 +195,25 @@ def game_loop():
     running = True
     while running:
 
+        # Controls the change in time for the debug frame rate renderer
         delta_time = time.time() - start_frame_time
         start_frame_time = time.time()
 
+        # Event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
+            # Checking for clickables if the player clicks
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 for clickable in soup:
                     response = clickable.mouse_click_behavior(x, y)
 
+                    # Gets the response to the player's click
                     match response:
+
+                        # If the player submits an anomaly, runs the ending cutscene
                         case "live":
                             solution = active_goober.solution
                             end_loop(solution, True)
@@ -216,6 +224,7 @@ def game_loop():
                     if response is not None:
                         break
 
+        # Rendering
         window.fill((33, 75, 65))
         webcam_window.render(window)
 
@@ -228,5 +237,5 @@ def game_loop():
 
 
 
-
+# Starts the game in the main menu loop
 main_menu()

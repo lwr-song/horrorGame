@@ -76,24 +76,34 @@ def main_menu():
         pygame.display.flip()
         c.tick(30)
 
+# Loop for the opening cutscene
 def prelude_loop():
     running = True
+
+    # Dialogue, which the game iterates through
     dialogue = ["I heard you're the new Identifier.",
                 "There's an Anomaly in my attic...",
                 "Help me get it out!"]
     window_width = 350
     window_height = 350
+
+    # Window where the dialogue will go
+    # TODO: Window where the dialogue IS
     dialogue_window = components.generate_window_sprite(window_width, window_height, "INCOMING MESSAGE")
     sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
     sprite = pygame.transform.scale(sprite, (50,50))
+
+    # Determines which line of dialogue is the current one
     index = 0
     index_max = len(dialogue)
     while running:
 
+        # Event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
+            # Increments the text if the mouse is pressed
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if index < index_max:
                     print(dialogue[index])
@@ -101,11 +111,13 @@ def prelude_loop():
                 else:
                     running = False
 
-
+        # Renders everything
         window.fill((0,0,0))
         window.blit(dialogue_window, (300,200))
         window.blit(sprite, (300,220))
         pygame.display.flip()
+
+    # Begins the game loop once the introduction is finished
     game_loop()
 
 def funeral(solution):

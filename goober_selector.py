@@ -14,6 +14,7 @@ with open("AnomalyData.json") as file:
 class GooberSelector:
     def __init__(self, group=None):
 
+        # This class is clickable, so it must be part of a group
         if group is not None:
             group.append(self)
 
@@ -36,6 +37,7 @@ class GooberSelector:
             text_size=16
         )
 
+        # The currently selected option in this window's ScrollingMenu
         self.selected_option = None
 
     def render(self, window):
@@ -53,8 +55,13 @@ class GooberSelector:
         window.blit(to_render, position)
 
     def mouse_click_behavior(self, mx, my, blah):
+        # blah is there because it would break otherwise
+
+        # Submit type of goober button check
         if self.submit_type_button.mouse_click_behavior(mx, my, (0, 720 - self.HEIGHT)):
             return "submit_type"
+
+        # Selecting something from the scrolling menu
         response = self.scrolling_menu.mouse_click_behavior(mx, my, (1080 - OPTION_WIDTH - 24, 740 - self.HEIGHT))
         if response is not None:
             self.selected_option = response
@@ -88,6 +95,7 @@ class ScrollingMenu:
     
     @property
     def scroll_bar(self):
+        # This function gets a surface with the height and width of the appropriate scroll bar
         scroll_body = pygame.Surface((18, self.height))
         scroll_body.fill((96, 96, 108))
 
@@ -99,12 +107,17 @@ class ScrollingMenu:
         return scroll_body
     
     def mouse_click_behavior(self, mx, my, relative_position=(0,0)):
-        
+
+        # Collision check
         if relative_position[1] < my < self.height + relative_position[1]:
-            if mx > OPTION_WIDTH + relative_position[0] + 4:
+
+            # For scrolling the scroll bar
+            if mx > OPTION_WIDTH + relative_position[0]:
                 self.scroll = max(0, min(self.MAX_HEIGHT,
                     (my - self.SCROLL_BAR_HEIGHT / 2 - relative_position[1]) / (self.height - self.SCROLL_BAR_HEIGHT) * self.MAX_HEIGHT
                                         ))
+
+            # Selecting an option from the list
             elif relative_position[0] < mx:
                 return self.options[int((my + self.scroll - relative_position[1]) / OPTION_HEIGHT)]
         return None

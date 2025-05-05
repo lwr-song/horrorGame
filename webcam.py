@@ -107,14 +107,19 @@ class Webcam:
         self.display.load_goober(window)
 
     def mouse_click_behavior(self, x, y):
+
+        # Clickable check loop
         for clickable in self.soup:
             response = clickable.mouse_click_behavior(x, y, self.position)
 
+            # Checking for responses from buttons
             match response:
+                # Video submit button
                 case "submit_video":
                     print(self.video_selector.selection)
 
                     #self.display.respond_to_visual(goober_type, visual)
+
                 case "submit_audio":
                     audio_selection = self.audio_selector.selection
 
@@ -137,7 +142,6 @@ class Webcam:
             if response is not None:
                 return response
 
-# TODO: make window uh bigger :D yayyy yayyy ya y ay yyy
 class WebcamDisplay:
     def __init__(self,window):
         self.body = pygame.image.load(WEBCAM_PATH)

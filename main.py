@@ -31,12 +31,13 @@ guy = pygame.transform.scale(guy,(400,400))
 
 
 # HELP ME! HEEELP!
+
+#creates main menu
 def main_menu():
     window.fill((0, 0, 0))
     main_menu_soap = []
     window.blit(guy,(300,100))
 
-    #b = components.generate_window(WIDTH / 2, 300, "Woke")
 
     #Make buttons
     x = 100
@@ -49,13 +50,15 @@ def main_menu():
 
     main_menu_soap += [play_button,tutorial_button]
 
-
+    #running loop
     running = True
     while running:
 
+        #if exited, close window
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
+            #if one of the button is pressed, run the corresponding function
             if event.type == pygame.MOUSEBUTTONDOWN:
                 x, y = pygame.mouse.get_pos()
                 for clickable in main_menu_soap:
@@ -69,12 +72,13 @@ def main_menu():
 
                     if response is not None:
                         break
-
+        #render the maim menu
         for thing in main_menu_soap:
             thing.render(window)
 
         pygame.display.flip()
         c.tick(30)
+
 
 # Loop for the opening cutscene
 def prelude_loop():
@@ -120,11 +124,14 @@ def prelude_loop():
     # Begins the game loop once the introduction is finished
     game_loop()
 
+
+#run the function if the user submitted wrong
 def funeral(solution):
     return ["HE DIED LMAO!",
             "Trying to.." + solution,
             "What in tarnation. Why."]
 
+#after the solution is submitted, see if the user is right
 def end_loop(solution, correct):
     running = True
     dialogue = ["You want me to " + solution + "..what..",
@@ -136,13 +143,18 @@ def end_loop(solution, correct):
     else:
         response = funeral(solution)
 
+    #create the dialogue window the person is talking through
     window_width = 350
     window_height = 350
     dialogue_window = components.generate_window_sprite(window_width, window_height, "INCOMING MESSAGE")
     sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
     sprite = pygame.transform.scale(sprite, (50,50))
+
+
     index = 0
     response_index = 0
+
+    #run the dialogue loop
     index_max = len(dialogue)
     while running:
 
@@ -161,11 +173,12 @@ def end_loop(solution, correct):
                     else:
                         running= False
 
-
+        #update the window
         window.fill((0,0,0))
         window.blit(dialogue_window, (300,200))
         window.blit(sprite, (300,220))
         pygame.display.flip()
+    #go back to the main menu
     main_menu()
 
 def game_loop():

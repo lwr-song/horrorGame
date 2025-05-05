@@ -225,7 +225,7 @@ def game_loop():
                         break
 
         # Rendering
-        window.fill((33, 75, 65))
+        window.fill((33, 75, 90))
         webcam_window.render(window)
 
 

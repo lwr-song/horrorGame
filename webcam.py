@@ -1,4 +1,4 @@
-import pygame, components, os, goober, goober_selector
+import pygame, components, os, goober, goober_selector, time
 pygame.init()
 
 WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
@@ -171,7 +171,7 @@ class WebcamDisplay:
 
             audio.play()
 
-"""              
+"""
     def render(self, x, y, relative_position=(0,0)):
         x += relative_position[0]
         y += relative_position[1]

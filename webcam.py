@@ -94,6 +94,9 @@ class Webcam:
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
         self.subtitles.render(to_render, self.WIDTH / 2, 380)
 
+        if self.display.sprite is not None:
+            to_render.blit(self.display.sprite,(0,0))
+
         self.submit_audio_button.render(to_render)
         self.submit_video_button.render(to_render)
 
@@ -117,7 +120,12 @@ class Webcam:
                 # Video submit button
                 case "submit_video":
                     print(self.video_selector.selection)
+                    self.display.respond_to_visual(self.display.active_goober.type_name, self.display.active_goober.responses['Visual'][self.video_selector.selection], self.video_selector.selection)
 
+
+                    if pygame.MOUSEBUTTONDOWN:
+                        print("remove the stimulus!")
+                        #self.body.
                     #self.display.respond_to_visual(goober_type, visual)
 
                 case "submit_audio":
@@ -150,14 +158,21 @@ class WebcamDisplay:
 
 
         self.load_goober(window)
-
+        self.sprite = None
     def load_goober(self,window):
 
         window.blit(self.active_goober.sprite, self.active_goober.position )
 
-    def respond_to_visual(self):
-        pass
-
+    def visual_response(self, response):
+        if response == "Flashing Lights":
+            print("woah it's liek uhh flashing :explosion: ")
+            return os.path.join("Assets","Visual","Response", response)
+    def respond_to_visual(self, goober_type, respond, visual):
+        if respond:
+            sprite = pygame.image.load(self.visual_response(visual) + ".png")
+        else:
+            sprite = pygame.image.load(os.path.join("Assets","Visual",visual + ".png"))
+        self.sprite = sprite
 
     def respond_to_audio(self, respond, audio_name):
 

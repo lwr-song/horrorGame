@@ -1,6 +1,7 @@
 import pygame
 import sys, time
 import components, webcam, goober_selector, os
+from dialogue_window import DialogueWindow
 import goober
 
 
@@ -85,7 +86,7 @@ def prelude_loop():
     running = True
 
     # Dialogue, which the game iterates through
-    dialogue = ["I heard you're the new Identifier.",
+    dialogue = ["Hey dude. There's a Thingy in my attic and i'm having a pretty bad day about it.. Haha",
                 "There's an Anomaly in my attic...",
                 "Help me get it out!"]
     window_width = 350
@@ -93,7 +94,7 @@ def prelude_loop():
 
     # Window where the dialogue will go
     # TODO: Window where the dialogue IS
-    dialogue_window = components.generate_window_sprite(window_width, window_height, "INCOMING MESSAGE")
+    dialogue_window = DialogueWindow((WIDTH/2, HEIGHT/2), dialogue)
     sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
     sprite = pygame.transform.scale(sprite, (50,50))
 
@@ -116,10 +117,11 @@ def prelude_loop():
                     running = False
 
         # Renders everything
-        window.fill((0,0,0))
-        window.blit(dialogue_window, (300,200))
-        window.blit(sprite, (300,220))
+        window.fill((33, 75, 90))
+        dialogue_window.render((WIDTH/2, HEIGHT/2), window)
+        dialogue_window.update()
         pygame.display.flip()
+        c.tick(30)
 
     # Begins the game loop once the introduction is finished
     game_loop()

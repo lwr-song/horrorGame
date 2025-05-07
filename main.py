@@ -1,8 +1,7 @@
 import pygame
 import sys, time
-import components, webcam, goober_selector, os
+import components, webcam, os
 from dialogue_window import DialogueWindow
-import goober
 
 
 
@@ -103,6 +102,10 @@ def prelude_loop():
     index_max = len(dialogue)
     while running:
 
+        window.fill((33, 75, 90))
+        dialogue_window.render((WIDTH/2, HEIGHT/2), window)
+        dialogue_window.update()
+
         # Event loop
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -110,16 +113,9 @@ def prelude_loop():
 
             # Increments the text if the mouse is pressed
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if index < index_max:
-                    print(dialogue[index])
-                    index += 1
-                else:
-                    running = False
+                running = dialogue_window.mouse_click_behavior()
 
         # Renders everything
-        window.fill((33, 75, 90))
-        dialogue_window.render((WIDTH/2, HEIGHT/2), window)
-        dialogue_window.update()
         pygame.display.flip()
         c.tick(30)
 

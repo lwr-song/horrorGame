@@ -15,11 +15,6 @@ class DialogueWindow:
         self.loaded_dialogue = self.dialogue_list[self.dialogue_index]
         self.current_dialogue_length = 0
 
-    def load_dialogue(self):
-        self.dialogue_index += 1
-        if self.dialogue_index >= len(self.dialogue_list):
-            return False
-
     def render(self, position, window):
         components.TF_BASIC.size = 24
         to_render = pygame.Surface((540, 180))
@@ -46,11 +41,28 @@ class DialogueWindow:
             self.current_dialogue_length = 0
 
             split_words = self.rendered_dialogue[-1].split(" ")
-            self.rendered_dialogue[-1] = " ".join(split_words[-1::-1])
             self.rendered_dialogue.append(split_words[-1])
+            del split_words[-1]
+            self.rendered_dialogue[-2] = " ".join(split_words)
 
         self.rendered_dialogue[-1] += self.dialogue_list[self.dialogue_index][self.letter_index]
         self.letter_index += 1
         self.current_dialogue_length = components.TF_BASIC.get_rect(self.rendered_dialogue[-1]).width
 
         components.TF_BASIC.size = components.TF_BASIC_DEFAULT_SIZE
+    
+    def mouse_click_behavior(self):
+
+        available_dialogue = self.dialogue_index < len(self.dialogue_list)
+        
+        if available_dialogue:
+            dialogue_is_over = self.letter_index >= len(self.dialogue_list[self.dialogue_index])
+            if dialogue_is_over:
+                self.rendered_dialogue = []
+                self.letter_index = 0
+                self.dialogue_index += 1
+                if self.dialogue_index >= len(self.dialogue_list):
+                    return False
+        else:
+            return False
+        return True

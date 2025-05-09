@@ -29,7 +29,7 @@ class DialogueWindow:
     def update(self):
 
         if self.letter_index >= len(self.dialogue_list[self.dialogue_index]):
-            return
+            return False
 
         components.TF_BASIC.size = 24
         if len(self.rendered_dialogue) == 0:
@@ -50,6 +50,11 @@ class DialogueWindow:
         self.current_dialogue_length = components.TF_BASIC.get_rect(self.rendered_dialogue[-1]).width
 
         components.TF_BASIC.size = components.TF_BASIC_DEFAULT_SIZE
+        return True
+
+    def skip(self):
+        while self.update():
+            pass
     
     def mouse_click_behavior(self):
 
@@ -63,6 +68,9 @@ class DialogueWindow:
                 self.dialogue_index += 1
                 if self.dialogue_index >= len(self.dialogue_list):
                     return False
+            else:
+                self.skip()
+                return True
         else:
             return False
         return True

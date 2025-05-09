@@ -90,12 +90,9 @@ class Webcam:
         to_render = pygame.Surface((self.WIDTH + self.STIMULUS_WINDOW_WIDTH, self.HEIGHT))
         to_render.blit(self.body, (0, 0))
         #self.display.render((13, 13), self.position)
-        to_render.blit(self.display.body, (13, 33))
+        self.display.render(13, 33, to_render)
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
         self.subtitles.render(to_render, self.WIDTH / 2, 380)
-
-        if self.display.sprite is not None:
-            to_render.blit(self.display.sprite,(0,0))
 
         self.submit_audio_button.render(to_render)
         self.submit_video_button.render(to_render)
@@ -107,14 +104,12 @@ class Webcam:
 
         self.anomaly_selector.render(window)
 
-        self.display.load_goober(window)
-
     def mouse_click_behavior(self, x, y):
 
         # Clickable check loop
         for clickable in self.soup:
             response = clickable.mouse_click_behavior(x, y, self.position)
-            self.display.sprite = None
+
             # Checking for responses from buttons
             match response:
                 # Video submit button
@@ -151,15 +146,10 @@ class WebcamDisplay:
     def __init__(self,window):
         self.body = pygame.image.load(WEBCAM_PATH)
         self.body = pygame.transform.scale(self.body, WEBCAM_SIZE)
-        self.active_goober = None
         self.active_goober = goober.random_goober(window)
 
-
-        self.load_goober(window)
         self.sprite = None
-    def load_goober(self,window):
-
-        window.blit(self.active_goober.sprite, self.active_goober.position )
+        self.last_visual_response = -1
 
     def visual_response(self, response):
         if response == "Flashing Lights":
@@ -171,6 +161,7 @@ class WebcamDisplay:
         else:
             sprite = pygame.image.load(os.path.join("Assets","Visual",visual + ".png"))
         self.sprite = sprite
+        self.last_visual_response = time.time()
 
     def respond_to_audio(self, respond, audio_name):
 
@@ -181,15 +172,17 @@ class WebcamDisplay:
 
         audio.play()
 
-"""
-    def render(self, x, y, relative_position=(0,0)):
-        x += relative_position[0]
-        y += relative_position[1]
+    def render(self, x, y, surface):
+
+        if time.time() - self.last_visual_response > 4:
+            self.last_visual_response = -1
+            self.sprite = None
 
         to_render = pygame.Surface(WEBCAM_SIZE)
         to_render.blit(self.body, (0, 0))
-        to_render.blit(self.active_goober.sprite, (0, 0))
+        to_render.blit(self.active_goober.sprite, self.active_goober.position)
 
-        
-        self.active_goober.render()
-"""
+        if self.sprite is not None:
+            to_render.blit(self.sprite, (0, 0))
+
+        surface.blit(to_render, (x, y))

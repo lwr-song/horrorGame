@@ -91,8 +91,6 @@ def prelude_loop():
     window_width = 350
     window_height = 350
 
-    # Window where the dialogue will go
-    # TODO: Window where the dialogue IS
     dialogue_window = DialogueWindow((WIDTH/2, HEIGHT/2), dialogue)
     sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
     sprite = pygame.transform.scale(sprite, (50,50))

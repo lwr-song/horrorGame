@@ -114,7 +114,7 @@ class Webcam:
         # Clickable check loop
         for clickable in self.soup:
             response = clickable.mouse_click_behavior(x, y, self.position)
-
+            self.display.sprite = None
             # Checking for responses from buttons
             match response:
                 # Video submit button
@@ -123,9 +123,7 @@ class Webcam:
                     self.display.respond_to_visual(self.display.active_goober.type_name, self.display.active_goober.responses['Visual'][self.video_selector.selection], self.video_selector.selection)
 
 
-                    if pygame.MOUSEBUTTONDOWN:
-                        print("remove the stimulus!")
-                        #self.body.
+
                     #self.display.respond_to_visual(goober_type, visual)
 
                 case "submit_audio":

@@ -154,7 +154,7 @@ class WebcamDisplay:
     def visual_response(self, response):
         if response == "Flashing Lights":
             print("woah it's liek uhh flashing :explosion: ")
-            return os.path.join("Assets","Visual","Response", response)
+        return os.path.join("Assets","Visual","Response", response)
     def respond_to_visual(self, goober_type, respond, visual):
 
         if self.last_visual_response == -1:

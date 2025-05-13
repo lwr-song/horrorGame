@@ -134,46 +134,38 @@ def end_loop(solution, correct):
                 "If you say so.",
                 "I'll check in with you tomorrow."]
     if correct:
-        response = ["Wow! It worked.",
+        dialogue += ["Wow! It worked.",
                     "I'll come back to you if there's another.."]
     else:
-        response = funeral(solution)
+        dialogue += funeral(solution)
 
     #create the dialogue window the person is talking through
     window_width = 350
     window_height = 350
-    dialogue_window = components.generate_window_sprite(window_width, window_height, "INCOMING MESSAGE")
+    dialogue_window = DialogueWindow((WIDTH / 2, HEIGHT / 2), dialogue)
     sprite = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
     sprite = pygame.transform.scale(sprite, (50,50))
 
 
     index = 0
-    response_index = 0
-
     #run the dialogue loop
     index_max = len(dialogue)
     while running:
+
+        window.fill((33, 75, 90))
+        dialogue_window.render((WIDTH / 2, HEIGHT / 2), window)
+        dialogue_window.update()
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 sys.exit()
 
             elif event.type == pygame.MOUSEBUTTONDOWN:
-                if index < index_max:
-                    print(dialogue[index])
-                    index += 1
-                else:
-                    if response_index < len(response):
-                        print(response[response_index])
-                        response_index += 1
-                    else:
-                        running= False
+                running = dialogue_window.mouse_click_behavior()
 
         #update the window
-        window.fill((0,0,0))
-        window.blit(dialogue_window, (300,200))
-        window.blit(sprite, (300,220))
         pygame.display.flip()
+        c.tick(30)
     #go back to the main menu
     main_menu()
 

@@ -151,19 +151,18 @@ class WebcamDisplay:
         self.sprite = None
         self.last_visual_response = -1
 
-    def visual_response(self, response):
-        if response == "Flashing Lights":
-            print("woah it's liek uhh flashing :explosion: ")
-        return os.path.join("Assets","Visual","Response", response)
+
     def respond_to_visual(self, goober_type, respond, visual):
 
         if self.last_visual_response == -1:
 
             if respond:
-                sprite = pygame.image.load(self.visual_response(visual) + ".png")
+                sprite = pygame.image.load(os.path.join("Assets","Visual","Response", visual) + ".png")
             else:
                 sprite = pygame.image.load(os.path.join("Assets","Visual",visual + ".png"))
+
             self.sprite = sprite
+            self.sprite = pygame.transform.scale(self.sprite, WEBCAM_SIZE)
             self.last_visual_response = time.time()
 
     def respond_to_audio(self, respond, audio_name):

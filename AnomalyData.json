@@ -34,7 +34,7 @@
 
   "straight up jorking it": {
     "Sprite": "liangxiu.png",
-    "Size": [225,225] ,
+    "Size": [250,375] ,
     "Behavior": "Aggressive",
     "Solution": "run a bathtub for twelve hours",
     "Description": "a little goob. He is,"
@@ -42,7 +42,7 @@
 
   "joe many liberals!": {
     "Sprite": "liangxiu.png",
-    "Size": [225,225] ,
+    "Size": [250,375] ,
     "Behavior": "Docile",
     "Solution": "hit it with a broom five times.",
     "Description": "Ohhh he hates the broom. He hates when you do that"
@@ -50,7 +50,7 @@
 
   "zamnn!": {
     "Sprite": "liangxiu.png",
-    "Size": [225,225] ,
+    "Size": [250,375] ,
     "Behavior": "Silent",
     "Solution": "switch to channel three on a television.",
     "Description": "i want you so badly"
@@ -58,7 +58,7 @@
 
   "ar ar arar ar ar ar ar ar ar": {
     "Sprite": "liangxiu.png",
-    "Size": [225,225] ,
+    "Size": [250,375] ,
     "Behavior": "Stubborn",
     "Solution": "play clock ticking sounds for six hours.",
     "Description": "bro was in the libray for to logn :laugh:"
@@ -91,6 +91,38 @@
   "jor jor well": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
+    "Behavior": "Stubborn",
+    "Solution": "play clock ticking sounds for six hours.",
+    "Description": "bro was in the libray for to logn :laugh:"
+  },
+
+  "Milky Boy": {
+    "Sprite": "yogurt male.png",
+    "Size": [250, 250] ,
+    "Behavior": "Aggressive",
+    "Solution": "run a bathtub for twelve hours",
+    "Description": "a little goob. He is,"
+  },
+
+  "jingle bell": {
+    "Sprite": "yogurt male.png",
+    "Size": [250, 250] ,
+    "Behavior": "Docile",
+    "Solution": "hit it with a broom five times.",
+    "Description": "Ohhh he hates the broom. He hates when you do that"
+  },
+
+  "narcolepsy and other associated psychological conditions": {
+    "Sprite": "yogurt male.png",
+    "Size": [250, 250] ,
+    "Behavior": "Silent",
+    "Solution": "switch to channel three on a television.",
+    "Description": "i want you so badly"
+  },
+
+  "don don me": {
+    "Sprite": "yogurt male.png",
+    "Size": [250, 250] ,
     "Behavior": "Stubborn",
     "Solution": "play clock ticking sounds for six hours.",
     "Description": "bro was in the libray for to logn :laugh:"

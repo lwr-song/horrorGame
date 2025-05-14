@@ -85,9 +85,7 @@ def prelude_loop():
     running = True
 
     # Dialogue, which the game iterates through
-    dialogue = ["Hey dude. There's a Thingy in my attic and i'm having a pretty bad day about it.. Haha",
-                "There's an Anomaly in my attic...",
-                "Help me get it out!"]
+    dialogue = [""]
     window_width = 350
     window_height = 350
 

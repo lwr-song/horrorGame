@@ -4,7 +4,7 @@
     "Size": [225,225] ,
     "Behavior": "Aggressive",
     "Solution": "run a bathtub for twelve hours",
-    "Description": "a little goob. He is,"
+    "Description": ["a little goob. He is,", "goober description thing yay yay"]
   },
 
   "po": {
@@ -12,7 +12,7 @@
     "Size": [225,225] ,
     "Behavior": "Docile",
     "Solution": "hit it with a broom five times.",
-    "Description": "Ohhh he hates the broom. He hates when you do that"
+    "Description": ["Ohhh he hates the broom. He hates when you do that", "I'm literally freaking it right now", "Haha", "", "I mean that he is ", "Whatever bro"]
   },
 
   "Shmingus": {
@@ -20,7 +20,7 @@
     "Size": [225,225] ,
     "Behavior": "Silent",
     "Solution": "switch to channel three on a television.",
-    "Description": "i want you so badly"
+    "Description": ["i want you so badly", "", "", "", "", "", "April foul"]
   },
 
   "grog": {
@@ -28,7 +28,7 @@
     "Size": [225,225] ,
     "Behavior": "Stubborn",
     "Solution": "play clock ticking sounds for six hours.",
-    "Description": "bro was in the libray for to logn :laugh:"
+    "Description": ["bro was in the libray for to logn :laugh:", "A lot of people call me asking for a loan."]
   },
 
 
@@ -37,7 +37,7 @@
     "Size": [250,375] ,
     "Behavior": "Aggressive",
     "Solution": "run a bathtub for twelve hours",
-    "Description": "a little goob. He is,"
+    "Description": ["a little goob. He is,", "Taking a Bath! Haha..", "Let's have a good day today."]
   },
 
   "joe many liberals!": {
@@ -45,7 +45,7 @@
     "Size": [250,375] ,
     "Behavior": "Docile",
     "Solution": "hit it with a broom five times.",
-    "Description": "Ohhh he hates the broom. He hates when you do that"
+    "Description": ["Ohhh he hates the broom. He hates when you do that", "Make every day a good day baby", "Steak monday baby Freak yeah"]
   },
 
   "zamnn!": {

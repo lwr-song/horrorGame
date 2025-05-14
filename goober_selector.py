@@ -21,6 +21,7 @@ class GooberSelector:
         self.HEIGHT = 250
         self.body = components.generate_window_sprite(1080, self.HEIGHT, "SELECTOR")
         self.scrolling_menu = ScrollingMenu(list(anomaly_data.keys()), self.HEIGHT - 70)
+        self.goober_display = GooberDisplay(1080 - OPTION_WIDTH - 30, self.HEIGHT - 70)
 
         # Building currently selected crucible
         selection_display_rect = pygame.Rect(1080 - OPTION_WIDTH - 24, self.HEIGHT - 40, OPTION_WIDTH, 30)
@@ -49,6 +50,7 @@ class GooberSelector:
             components.TF_BASIC.render_to(to_render, (1080 - OPTION_WIDTH - 19, self.HEIGHT - 30), self.selected_option)
 
         self.scrolling_menu.render(to_render, (1080 - OPTION_WIDTH - 24, 20))
+        self.goober_display.render(4, 22, to_render, self.selected_option)
 
         self.submit_type_button.render(to_render)
 
@@ -78,6 +80,7 @@ class ScrollingMenu:
         self.MAX_HEIGHT = len(options) * OPTION_HEIGHT - height
 
         self.options = options
+        self.options.sort()
         self.selected_option = 0
         self.height = height
 
@@ -129,3 +132,36 @@ class ScrollingMenu:
         to_render.blit(self.options_list, (0, 2), area=crop_rectangle)
         to_render.blit(self.scroll_bar, (OPTION_WIDTH + 2, 2))
         surface.blit(to_render, position)
+
+class GooberDisplay:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+        self.body = pygame.Surface((width, height))
+
+        interior = pygame.Surface((width - 4, height - 4))
+        interior.fill((216, 216, 236))
+        self.body.blit(interior, (2, 2))
+
+        self.display = pygame.Surface((height - 8, height - 12))
+
+    def render(self, x, y, surface, goober):
+        surface.blit(self.body, (x, y))
+        if goober is None:
+            text = ["No anomaly selected."]
+        else:
+            text = anomaly_data[goober]["Description"]
+            self.display.fill((196, 196, 216))
+            sprite = pygame.image.load(os.path.join("Assets", "Sprites", "Goober", anomaly_data[goober]["Sprite"]))
+
+            spright = sprite.get_rect().height #it stands for sprite height
+            spridth = sprite.get_rect().width # Same
+            if spright < self.height - 12:
+                sprite = pygame.transform.scale(sprite, (spridth * ((self.height - 8) / spright), self.height - 12))
+
+            self.display.blit(sprite, ((self.height - 8) / 2 - spridth / 2, 0))
+            surface.blit(self.display, (x + self.width - (self.height - 8) - 4, y + 6))
+
+        for i in range(len(text)):
+            line = text[i]
+            components.TF_BASIC.render_to(surface, (x + 4, y + 4 + 20 * i), line)

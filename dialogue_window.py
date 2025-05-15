@@ -1,10 +1,15 @@
 import pygame
 import components
+import os
 pygame.init()
+
+little_boy = pygame.image.load(os.path.join("Assets", "Sprites", "People", "the greechure.png"))
 
 class DialogueWindow:
     def __init__(self, center, dialogue_list):
+
         self.body = components.generate_window_sprite(540, 180, "INCOMING CALL")
+        self.body.blit(little_boy, (4, 24))
         self.center = center
 
         self.rendered_dialogue = []
@@ -14,6 +19,7 @@ class DialogueWindow:
 
         self.loaded_dialogue = self.dialogue_list[self.dialogue_index]
         self.current_dialogue_length = 0
+
 
     def render(self, position, window):
         components.TF_BASIC.size = 24
@@ -25,6 +31,7 @@ class DialogueWindow:
 
         window.blit(to_render, (self.center[0] - 270, self.center[1] - 180))
         components.TF_BASIC.size = components.TF_BASIC_DEFAULT_SIZE
+
 
     def update(self):
 

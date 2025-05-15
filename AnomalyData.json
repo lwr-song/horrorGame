@@ -3,32 +3,28 @@
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
-    "Description": ["a little goob. He is,", "goober description thing yay yay"]
+    "Solution": "run a bathtub for twelve hours"
   },
 
   "po": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
-    "Description": ["Ohhh he hates the broom. He hates when you do that", "I'm literally freaking it right now", "Haha", "", "I mean that he is ", "Whatever bro"]
+    "Solution": "hit it with a broom five times."
   },
 
   "Shmingus": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
-    "Description": ["i want you so badly", "", "", "", "", "", "April foul"]
+    "Solution": "switch to channel three on a television."
   },
 
   "grog": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
-    "Description": ["bro was in the libray for to logn :laugh:", "A lot of people call me asking for a loan."]
+    "Solution": "play clock ticking sounds for six hours."
   },
 
 
@@ -36,95 +32,83 @@
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
-    "Description": ["a little goob. He is,", "Taking a Bath! Haha..", "Let's have a good day today."]
+    "Solution": "run a bathtub for twelve hours"
   },
 
   "joe many liberals!": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
-    "Description": ["Ohhh he hates the broom. He hates when you do that", "Make every day a good day baby", "Steak monday baby Freak yeah"]
+    "Solution": "hit it with a broom five times."
   },
 
   "zamnn!": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
-    "Description": "i want you so badly"
+    "Solution": "switch to channel three on a television."
   },
 
   "ar ar arar ar ar ar ar ar ar": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
-    "Description": "bro was in the libray for to logn :laugh:"
+    "Solution": "play clock ticking sounds for six hours."
   },
 
     "YOINKY SPLOINK": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
-    "Description": "a little goob. He is,"
+    "Solution": "run a bathtub for twelve hours"
   },
 
   "joe shmingle": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
-    "Description": "Ohhh he hates the broom. He hates when you do that"
+    "Solution": "hit it with a broom five times."
   },
 
   "jovial merryment": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
-    "Description": "i want you so badly"
+    "Solution": "switch to channel three on a television."
   },
 
   "jor jor well": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
-    "Description": "bro was in the libray for to logn :laugh:"
+    "Solution": "play clock ticking sounds for six hours."
   },
 
   "Milky Boy": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
-    "Description": "a little goob. He is,"
+    "Solution": "run a bathtub for twelve hours"
   },
 
   "jingle bell": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
-    "Description": "Ohhh he hates the broom. He hates when you do that"
+    "Solution": "hit it with a broom five times."
   },
 
   "narcolepsy and other associated psychological conditions": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
-    "Description": "i want you so badly"
+    "Solution": "switch to channel three on a television."
   },
 
   "don don me": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
-    "Description": "bro was in the libray for to logn :laugh:"
+    "Solution": "play clock ticking sounds for six hours."
   }
 }

@@ -10,6 +10,8 @@ OPTION_WIDTH = OPTION.get_rect().width
 
 with open("AnomalyData.json") as file:
     anomaly_data = json.load(file)
+with open("DescriptionData.json") as file:
+    description_data = json.load(file)
 
 class GooberSelector:
     def __init__(self, group=None):
@@ -150,7 +152,13 @@ class GooberDisplay:
         if goober is None:
             text = ["No anomaly selected."]
         else:
-            text = anomaly_data[goober]["Description"]
+            goober_data = anomaly_data[goober]
+
+            identity_description = description_data["Sprite"][goober_data["Sprite"]]
+            behavior_description = description_data["Behavior"][goober_data["Behavior"]]
+
+            text = identity_description + [""] + behavior_description
+
             self.display.fill((196, 196, 216))
             sprite = pygame.image.load(os.path.join("Assets", "Sprites", "Goober", anomaly_data[goober]["Sprite"]))
 

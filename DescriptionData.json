@@ -1,0 +1,14 @@
+{
+  "Sprite": {
+    "the book goob.png": ["please write this description later", "thank you"],
+    "liangxiu.png": ["something about chinese people idk", "thank you"],
+    "the spreachure.png": ["Oh no i", "Ve been eaten. Oh no"],
+    "yogurt male.png": ["haha oohhhh im so sleepy", "someone give me uppies", "uppies Ohhh i want uppise"]
+  },
+  "Behavior": {
+    "Aggressive": ["Write this later boy. Aggressive"],
+    "Docile": ["Write this later boy. Docile"],
+    "Silent": ["Write this later boy. Silent"],
+    "Stubborn": ["Write this later boy. Stubborn"]
+  }
+}

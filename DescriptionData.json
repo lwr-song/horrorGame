@@ -6,9 +6,9 @@
     "yogurt male.png": ["haha oohhhh im so sleepy", "someone give me uppies", "uppies Ohhh i want uppise"]
   },
   "Behavior": {
-    "Aggressive": ["Write this later boy. Aggressive"],
-    "Docile": ["Write this later boy. Docile"],
-    "Silent": ["Write this later boy. Silent"],
-    "Stubborn": ["Write this later boy. Stubborn"]
+    "Aggressive": ["reacts to knocking, baby crying, wind, glass break,"],
+    "Docile": ["reacts to bird chirp, water drip, glass break,"],
+    "Silent": ["react to knocking, baby crying, water drip, screaming,"],
+    "Stubborn": ["react to bird chirp, wind, screaming"]
   }
 }

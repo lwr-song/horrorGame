@@ -82,7 +82,6 @@ class ScrollingMenu:
         self.MAX_HEIGHT = len(options) * OPTION_HEIGHT - height
 
         self.options = options
-        self.options.sort()
         self.selected_option = 0
         self.height = height
 
@@ -164,8 +163,6 @@ class GooberDisplay:
 
             spright = sprite.get_rect().height #it stands for sprite height
             spridth = sprite.get_rect().width # Same
-            if spright < self.height - 12:
-                sprite = pygame.transform.scale(sprite, (spridth * ((self.height - 8) / spright), self.height - 12))
 
             self.display.blit(sprite, ((self.height - 8) / 2 - spridth / 2, 0))
             surface.blit(self.display, (x + self.width - (self.height - 8) - 4, y + 6))

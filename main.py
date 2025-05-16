@@ -46,9 +46,8 @@ def main_menu():
     height = 100
 
     play_button = components.Button(x, y, width, height, "gameplay loop", "Play", 3, main_menu_soap, 50)
-    tutorial_button = components.Button(x, y + 250, width, height, "tutorial loop", "Tutorial", 3 ,main_menu_soap, 50 )
 
-    main_menu_soap += [play_button,tutorial_button]
+    main_menu_soap += [play_button]
 
     #running loop
     running = True
@@ -66,9 +65,6 @@ def main_menu():
                     match response:
                         case "gameplay loop":
                             prelude_loop()
-
-                        case "tutorial loop":
-                            print("YAYY")
 
                     if response is not None:
                         break

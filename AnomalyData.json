@@ -1,114 +1,146 @@
 {
-  "Yargle Bargle": {
+  "Diogenes-01": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours"
+    "Solution": "run a bathtub for twelve hours",
+    "ReactionSounds": ["Rattling.mp3"],
+    "DeathQuote": "(You thought you heard the sound of spilling liquid.)"
   },
 
-  "po": {
+  "Diogenes-02": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times."
+    "Solution": "hit it with a broom five times",
+    "ReactionSounds": ["Rattling.mp3"],
+    "DeathQuote": "(You thought you heard the sound of spilling liquid.)"
   },
 
-  "Shmingus": {
+  "Diogenes-03": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television."
+    "Solution": "switch to channel three on a television",
+    "ReactionSounds": ["Rattling.mp3"],
+    "DeathQuote": "(You thought you heard the sound of spilling liquid.)"
   },
 
-  "grog": {
+  "Diogenes-04": {
     "Sprite": "the book goob.png",
     "Size": [225,225] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours."
+    "Solution": "play clock ticking sounds for six hours",
+    "ReactionSounds": ["Rattling.mp3"],
+    "DeathQuote": "(You thought you heard the sound of spilling liquid.)"
   },
 
 
-  "straight up jorking it": {
+  "Liangxiu-01": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours"
+    "Solution": "run a bathtub for twelve hours",
+    "ReactionSounds": ["Humming.mp3"],
+    "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
 
-  "joe many liberals!": {
+  "Liangxiu-02": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times."
+    "Solution": "hit it with a broom five times.",
+    "ReactionSounds": ["Humming.mp3"],
+    "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
 
-  "zamnn!": {
+  "Liangxiu-03": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television."
+    "Solution": "switch to channel three on a television.",
+    "ReactionSounds": ["Humming.mp3"],
+    "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
 
-  "ar ar arar ar ar ar ar ar ar": {
+  "Liangxiu-04": {
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours."
+    "Solution": "play clock ticking sounds for six hours.",
+    "ReactionSounds": ["Humming.mp3"],
+    "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
 
-    "YOINKY SPLOINK": {
+  "Early Worm-01": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours"
+    "Solution": "run a bathtub for twelve hours",
+    "ReactionSounds": ["Breathing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
 
-  "joe shmingle": {
+  "Early Worm-02": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times."
+    "Solution": "hit it with a broom five times.",
+    "ReactionSounds": ["Breathing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
 
-  "jovial merryment": {
+  "Early Worm-03": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television."
+    "Solution": "switch to channel three on a television.",
+    "ReactionSounds": ["Breathing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
 
-  "jor jor well": {
+  "Early Worm-04": {
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours."
+    "Solution": "play clock ticking sounds for six hours.",
+    "ReactionSounds": ["Breathing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
 
-  "Milky Boy": {
+  "One-Body Solution-01": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours"
+    "Solution": "run a bathtub for twelve hours",
+    "ReactionSounds": ["Sloshing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of running water.)"
   },
 
-  "jingle bell": {
+  "One-Body Solution-02": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times."
+    "Solution": "hit it with a broom five times.",
+    "ReactionSounds": ["Sloshing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of running water.)"
   },
 
-  "narcolepsy and other associated psychological conditions": {
+  "One-Body Solution-03": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television."
+    "Solution": "switch to channel three on a television.",
+    "ReactionSounds": ["Sloshing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of running water.)"
   },
 
-  "don don me": {
+  "One-Body Solution-04": {
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours."
+    "Solution": "play clock ticking sounds for six hours.",
+    "ReactionSounds": ["Sloshing.mp3"],
+    "DeathQuote": "(You thought you heard the sound of running water.)"
   }
 }

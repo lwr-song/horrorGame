@@ -109,6 +109,9 @@ class Button:
         self.body = generate_button_sprite(width, height, text, text_size, shade_size)
         self.width = width
         self.height = height
+        self.text_size = text_size
+        self.shade_size = shade_size
+        self.text = text
         self.response = response # This response will be returned when this button is pressed
         self.x, self.y = (x, y)
         
@@ -123,7 +126,10 @@ class Button:
                 # Check for this response later in order to perform
                 # certain functions
                 return self.response
-
+    
+    def change_text(self, text):
+        self.body = generate_button_sprite(self.width, self.height, text, self.text_size, self.shade_size)
+        self.text = text
 
 # Dropdown class
 class Dropdown:

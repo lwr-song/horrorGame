@@ -25,6 +25,8 @@ names = ["grog", "greg heffley", "gregg gregffley"]
 def random_goober(window):
     goober_type = random.choice(list(anomaly_data.keys()))
     goober_name = random.choice(names)
+
+    goober_name = "Liangxiu-01"
     goober = Goober(window, goober_name, goober_type, (230, 20))
     print(goober_name,goober_type,goober)
     return goober
@@ -52,5 +54,7 @@ class Goober:
         #set up the responses based on the behavior
         self.responses = behavior_data[self.behavior]
         self.solution = self.specific_type["Solution"]
+        self.reaction_sounds = self.specific_type["ReactionSounds"]
+        self.death_quote = self.specific_type["DeathQuote"]
 
         self.window = window

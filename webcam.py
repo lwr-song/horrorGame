@@ -1,4 +1,4 @@
-import pygame, components, os, goober, goober_selector, time
+import pygame, components, os, goober, goober_selector, time, random, math
 pygame.init()
 
 WEBCAM_PATH = os.path.join("Assets", "Sprites", "UI", "webcam.png")
@@ -48,9 +48,6 @@ class Webcam:
             group=self.soup
         )
 
-        # Subtitle holder
-        self.subtitles = components.SubtitleHolder(2, do_truncation=False)
-
         # Button for submitting audio stumulus
         self.submit_audio_button = components.Button(
             self.WIDTH + 5,
@@ -72,6 +69,7 @@ class Webcam:
             "Play Video",
             group=self.soup
         )
+        self.audio_playable_timestamp = -1
 
         self.anomaly_selector = goober_selector.GooberSelector(self.soup)
 
@@ -84,15 +82,21 @@ class Webcam:
         # Just to avoid overcrowding
         components.TF_BASIC.render_to(self.stimulus_window, (5, 30), "Select Audio Prompt")
         components.TF_BASIC.render_to(self.stimulus_window, (5, 110), "Select Video Prompt")
+    
+    def update_button_statuses(self):
+        if time.time() > self.audio_playable_timestamp:
+            if self.submit_audio_button.text != "Play Audio":
+                self.submit_audio_button.change_text("Play Audio")
 
     def render(self, window):
+
+        self.update_button_statuses()
 
         to_render = pygame.Surface((self.WIDTH + self.STIMULUS_WINDOW_WIDTH, self.HEIGHT))
         to_render.blit(self.body, (0, 0))
         #self.display.render((13, 13), self.position)
         self.display.render(13, 33, to_render)
         to_render.blit(self.stimulus_window, (self.WIDTH, 0))
-        self.subtitles.render(to_render, self.WIDTH / 2, 380)
 
         self.submit_audio_button.render(to_render)
         self.submit_video_button.render(to_render)
@@ -115,23 +119,16 @@ class Webcam:
                 # Video submit button
                 case "submit_video":
                     print(self.video_selector.selection)
-                    self.display.respond_to_visual(self.display.active_goober.type_name, self.display.active_goober.responses['Visual'][self.video_selector.selection], self.video_selector.selection)
-
-
-
-                    #self.display.respond_to_visual(goober_type, visual)
+                    self.display.respond_to_visual(self.display.active_goober.responses['Visual'][self.video_selector.selection], self.video_selector.selection)
 
                 case "submit_audio":
-                    audio_selection = self.audio_selector.selection
+                    if time.time() > self.audio_playable_timestamp:
+                        audio_selection = self.audio_selector.selection
+                        response = self.display.active_goober.responses['Sound'][audio_selection]
+                        audio_duration = self.display.respond_to_audio(response, audio_selection)
+                        self.audio_playable_timestamp = time.time() + audio_duration
+                        self.submit_audio_button.change_text("Playing Audio")
 
-                    #audio = pygame.mixer.Sound(os.path.join("Assets","Audio", audio_selection + ".wav"))
-
-                    response = self.display.active_goober.responses['Sound'][audio_selection]
-                    self.display.respond_to_audio(response, audio_selection)
-
-                    self.subtitles.add_subtitle("(" + audio_selection[0] + audio_selection[1:].lower() + ")", 3, 0)
-
-                    print(response)
                 case "submit_type":
                     type_selection = self.anomaly_selector.selected_option
                     if type_selection == self.display.active_goober.type_name:
@@ -150,14 +147,20 @@ class WebcamDisplay:
 
         self.sprite = None
         self.last_visual_response = -1
+        self.shake = -1
+
+        self.last_goober_reaction = -1
+
+        self.subtitles = components.SubtitleHolder(2, do_truncation=False)
 
 
-    def respond_to_visual(self, goober_type, respond, visual):
+    def respond_to_visual(self, respond, visual):
 
         if self.last_visual_response == -1:
 
             if respond:
                 sprite = pygame.image.load(os.path.join("Assets","Visual","Response", visual) + ".png")
+                self.shake = time.time() + 4 + random.random() * 2
             else:
                 sprite = pygame.image.load(os.path.join("Assets","Visual",visual + ".png"))
 
@@ -167,24 +170,42 @@ class WebcamDisplay:
 
     def respond_to_audio(self, respond, audio_name):
 
-        if respond:
-            audio = pygame.mixer.Sound(os.path.join("Assets", "Audio", "Response", audio_name + ".mp3"))
+        if respond and random.randint(1, 5) > 1:
+            audio = pygame.mixer.Sound(os.path.join("Assets", "Audio", "AudioCue_YesResponse", audio_name + ".mp3"))
+            self.shake = time.time() + (audio.get_length() * (random.random() / 2 + 0.5))
+
         else:
-            audio = pygame.mixer.Sound(os.path.join("Assets", "Audio", audio_name + ".mp3"))
+            audio = pygame.mixer.Sound(os.path.join("Assets", "Audio", "AudioCue_NoResponse", audio_name + ".mp3"))
 
         audio.play()
+        self.subtitles.add_subtitle("<" + audio_name[0] + audio_name[1:].lower() + ">", audio.get_length(), 0)
+
+        return audio.get_length()
 
     def render(self, x, y, surface):
 
         if time.time() - self.last_visual_response > 4:
             self.last_visual_response = -1
             self.sprite = None
+        
+        if 1 > time.time() - self.shake > 0:
+            if time.time() - self.last_goober_reaction > 1:
+                self.last_goober_reaction = time.time()
+                if random.randint(1, 5) > 1:
+                    audio_name = random.choice(self.active_goober.reaction_sounds)
+                    audio = pygame.mixer.Sound(os.path.join("Assets", "Audio", "ResponseAtmospheric", audio_name))
+                    audio.play()
+                    self.subtitles.add_subtitle("<" + audio_name[:-4] + ">", audio.get_length(), 1)
+            goobx = math.sin(25 * (time.time() - self.shake)) / (time.time() - self.shake + 0.4)
+        else:
+            goobx = 0
 
         to_render = pygame.Surface(WEBCAM_SIZE)
         to_render.blit(self.body, (0, 0))
-        to_render.blit(self.active_goober.sprite, self.active_goober.position)
+        to_render.blit(self.active_goober.sprite, (self.active_goober.position[0] + goobx, self.active_goober.position[1]))
 
         if self.sprite is not None:
             to_render.blit(self.sprite, (0, 0))
+        self.subtitles.render(to_render, WEBCAM_SIZE[0] / 2 + 13, 300)
 
         surface.blit(to_render, (x, y))

@@ -1,9 +1,9 @@
 {
   "Sprite": {
-    "the book goob.png": ["please write this description later", "thank you"],
-    "liangxiu.png": ["something about chinese people idk", "thank you"],
+    "the book goob.png": ["Its negligence led it inside, fallen and trapped pathetically, wallowing", "in its own ineptitude. One may study mathematics, read philosophy, enjoy", "the revelries of life. But one who stares up as far as one may", "will soon despise the self who refused to watch his feet."],
+    "liangxiu.png": ["Two halves of a man engage in a game of hide-and-seek. One-half suppresses", "his vision in the nearby undergrowth, convinced that his perspective", "is absolute due to his rationality. But as his nature affects onto his", "mind, man affects onto nature, and he is caught in the forest.", "Perhaps in the next game, he will accept himself wrong."],
     "the spreachure.png": ["Oh no i", "Ve been eaten. Oh no"],
-    "yogurt male.png": ["haha oohhhh im so sleepy", "someone give me uppies", "uppies Ohhh i want uppise"]
+    "yogurt male.png": ["It exists in a state where it cannot be located with precision, but one", "can still discern its shadow from the surrounding space. It is", "undoubtedly there, permeating the universe, though we cannot pinpoint", "where that crucial consciousness arises from."]
   },
   "Behavior": {
     "Aggressive": ["reacts to knocking, baby crying, wind, glass break,"],

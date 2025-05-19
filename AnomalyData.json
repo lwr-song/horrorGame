@@ -121,7 +121,7 @@
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
+    "Solution": "press my thumbprint into the dust on the floor",
     "ReactionSounds": ["Sloshing.mp3"],
     "DeathQuote": "(You thought you heard the sound of running water.)"
   },
@@ -130,7 +130,7 @@
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
+    "Solution": "leave out an empty fishbowl",
     "ReactionSounds": ["Sloshing.mp3"],
     "DeathQuote": "(You thought you heard the sound of running water.)"
   },
@@ -139,8 +139,44 @@
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
+    "Solution": "pour water all over the floor",
     "ReactionSounds": ["Sloshing.mp3"],
     "DeathQuote": "(You thought you heard the sound of running water.)"
+  },
+
+  "Compost-01": {
+    "Sprite": "Compost.png",
+    "Size": [150, 150],
+    "Behavior": "Aggressive",
+    "Solution": "leave out freshly peeled carrots",
+    "ReactionSounds": ["Chittering.mp3"],
+    "DeathQuote": "(You thought you heard the sound of quiet chittering.)"
+  },
+
+  "Compost-02": {
+    "Sprite": "Compost.png",
+    "Size": [150, 150],
+    "Behavior": "Silent",
+    "Solution": "leave out a bowl of warm milk",
+    "ReactionSounds": ["Chittering.mp3"],
+    "DeathQuote": "(You thought you heard the sound of quiet chittering.)"
+  },
+
+  "Compost-03": {
+    "Sprite": "Compost.png",
+    "Size": [150, 150],
+    "Behavior": "Stubborn",
+    "Solution": "stamp down hard on your floorboards",
+    "ReactionSounds": ["Chittering.mp3"],
+    "DeathQuote": "(You thought you heard the sound of quiet chittering.)"
+  },
+
+  "Compost-04": {
+    "Sprite": "Compost.png",
+    "Size": [150, 150],
+    "Behavior": "Docile",
+    "Solution": "blow warm air into the room",
+    "ReactionSounds": ["Chittering.mp3"],
+    "DeathQuote": "(You thought you heard the sound of quiet chittering.)"
   }
 }

@@ -1,6 +1,6 @@
 import pygame
 import sys, time
-import components, webcam, os
+import components, webcam, os, json
 from dialogue_window import DialogueWindow
 
 MOUSE_DOWN = pygame.mixer.Sound(os.path.join("Assets", "Audio", "MouseDown.mp3"))
@@ -26,7 +26,8 @@ c = pygame.time.Clock()
 # CINEMA
 # I could just use normal Pygame sprite groups but sunk cost fallacy or whatever
 soup = []
-
+with open("AnomalyData.json") as file:
+    anomaly_data = json.load(file)
 
 guy = pygame.transform.scale(guy,(400,400))
 
@@ -135,10 +136,10 @@ def funeral(goober):
             goober.death_quote]
 
 #after the solution is submitted, see if the user is right
-def end_loop(goober, correct):
+def end_loop(goober, solution, correct):
     running = True
     dialogue = ["Hey, I read over the instructions you sent me, and this makes no sense at all.",
-                "So I'm calling you about some noise in my attic, and then you tell me you want me to " + goober.solution + "? What does that have to do with anything??",
+                "So I'm calling you about some noise in my attic, and then you tell me you want me to " + solution + "? What does that have to do with anything??",
                 "I'm gonna go do whatever you said, but if it doesn't work, I'm never calling you again.",
                 "(...)"]
     if correct:
@@ -213,9 +214,11 @@ def game_loop():
 
                         # If the player submits an anomaly, runs the ending cutscene
                         case "live":
-                            end_loop(active_goober, True)
+                            solution = anomaly_data[webcam_window.anomaly_selector.selected_option]["Solution"]
+                            end_loop(active_goober, solution, True)
                         case "die":
-                            end_loop(active_goober, False)
+                            solution = anomaly_data[webcam_window.anomaly_selector.selected_option]["Solution"]
+                            end_loop(active_goober, solution, False)
 
                     if response is not None:
                         break

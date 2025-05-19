@@ -1,14 +1,15 @@
 {
   "Sprite": {
-    "the book goob.png": ["Its negligence led it inside, fallen and trapped pathetically, wallowing", "in its own ineptitude. One may study mathematics, read philosophy, enjoy", "the revelries of life. But one who stares up as far as one may", "will soon despise the self who refused to watch his feet."],
-    "liangxiu.png": ["Two halves of a man engage in a game of hide-and-seek. One-half suppresses", "his vision in the nearby undergrowth, convinced that his perspective", "is absolute due to his rationality. But as his nature affects onto his", "mind, man affects onto nature, and he is caught in the forest.", "Perhaps in the next game, he will accept himself wrong."],
-    "the spreachure.png": ["Oh no i", "Ve been eaten. Oh no"],
-    "yogurt male.png": ["It exists in a state where it cannot be located with precision, but one", "can still discern its shadow from the surrounding space. It is", "undoubtedly there, permeating the universe, though we cannot pinpoint", "where that crucial consciousness arises from."]
+    "the book goob.png": ["\"Its negligence led it inside, fallen and trapped pathetically, wallowing", "in its own ineptitude. One may study mathematics, read philosophy, enjoy", "the revelries of life. But one who stares up as far as one may", "will soon despise the self who refused to watch his feet.\""],
+    "liangxiu.png": ["\"Two halves of a man engage in a game of hide-and-seek. One-half suppresses", "his vision in the nearby undergrowth, convinced that his perspective", "is absolute due to his rationality. But as his nature affects onto his", "mind, man affects onto nature, and he is caught in the forest.", "Perhaps in the next game, he will accept himself wrong.\""],
+    "the spreachure.png": ["\"It took a rest, only a short one, and awoke with its appendages bandaged", "in ribbons of silk. It writhes, attempting to relinquish itself of this", "cruel fate, but it cannot move. For these cobwebs have wormed themselves", "and affixed themselves to its heart, mind, and soul, and so it sleeps", "again, for a longer time, basking in its own lethargy.\""],
+    "yogurt male.png": ["\"It exists in a state where it cannot be located with precision, but one", "can still discern its shadow from the surrounding space. It is", "undoubtedly there, permeating the universe, though we cannot pinpoint", "where that crucial consciousness arises from.\""],
+    "Compost.png": ["\"It envisions itself as an all-powerful entity, who feasts on the", "bounties nature provides for it and it alone; who thrives off the", "consumption of the lesser. But its life is not forever, and as it lays", "rotting in its own domicile, it hypocritically chastises the maggots", "worming their way inside of it for consuming it.\""]
   },
   "Behavior": {
-    "Aggressive": ["reacts to knocking, baby crying, wind, glass break,"],
-    "Docile": ["reacts to bird chirp, water drip, glass break,"],
-    "Silent": ["react to knocking, baby crying, water drip, screaming,"],
-    "Stubborn": ["react to bird chirp, wind, screaming"]
+    "Aggressive": ["It reacts negatively to stimuli associated with glass, as well as", "childhood memories. Other factors, such as wind and sudden frequent", "light changes, may also trigger a reaction in this anomaly."],
+    "Docile": ["It dislikes anything even remotely associable with the color blue,", "such as bluebirds, drawings involving blue, or the blue sky", "through the glass window."],
+    "Silent": ["It reacts mostly to harsh changes in lighting, volume, or environment,", "except for the sound of breaking glass. It is also", "particularly averse to water."],
+    "Stubborn": ["It dislikes nature and other natural processes, even as far as to", "despise its own reflection. Harsh light changes", "may also agitate it, or the sound of screaming. However, it", "is practically tranquilized and made docile by flashing lights."]
   }
 }

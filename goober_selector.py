@@ -23,7 +23,7 @@ class GooberSelector:
         self.HEIGHT = 250
         self.body = components.generate_window_sprite(1080, self.HEIGHT, "SELECTOR")
         self.scrolling_menu = ScrollingMenu(list(anomaly_data.keys()), self.HEIGHT - 70)
-        self.goober_display = GooberDisplay(1080 - OPTION_WIDTH - 30, self.HEIGHT - 70)
+        self.goober_display = GooberDisplay(1080 - OPTION_WIDTH - 30, self.HEIGHT - 10)
 
         # Building currently selected crucible
         selection_display_rect = pygame.Rect(1080 - OPTION_WIDTH - 24, self.HEIGHT - 40, OPTION_WIDTH, 30)
@@ -31,9 +31,9 @@ class GooberSelector:
 
         # Button for submitting type
         self.submit_type_button = components.Button(
-            400,
+            550,
             self.HEIGHT - 40,
-            250,
+            150,
             35,
             "submit_type",
             "Submit Type",
@@ -144,7 +144,7 @@ class GooberDisplay:
         interior.fill((216, 216, 236))
         self.body.blit(interior, (2, 2))
 
-        self.display = pygame.Surface((height - 8, height - 12))
+        self.display = pygame.Surface((height - 68, height - 72))
 
     def render(self, x, y, surface, goober):
         surface.blit(self.body, (x, y))
@@ -161,11 +161,10 @@ class GooberDisplay:
             self.display.fill((196, 196, 216))
             sprite = pygame.image.load(os.path.join("Assets", "Sprites", "Goober", anomaly_data[goober]["Sprite"]))
 
-            spright = sprite.get_rect().height #it stands for sprite height
             spridth = sprite.get_rect().width # Same
 
-            self.display.blit(sprite, ((self.height - 8) / 2 - spridth / 2, 0))
-            surface.blit(self.display, (x + self.width - (self.height - 8) - 4, y + 6))
+            self.display.blit(sprite, ((self.height - 68) / 2 - spridth / 2, 0))
+            surface.blit(self.display, (x + self.width - (self.height - 68) - 4, y + 6))
 
         for i in range(len(text)):
             line = text[i]

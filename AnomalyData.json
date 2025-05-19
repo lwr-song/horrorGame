@@ -40,7 +40,7 @@
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
+    "Solution": "pray for a few minutes",
     "ReactionSounds": ["Humming.mp3"],
     "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
@@ -49,7 +49,7 @@
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
+    "Solution": "drink a liter of milk",
     "ReactionSounds": ["Humming.mp3"],
     "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
@@ -58,7 +58,7 @@
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
+    "Solution": "only use your left hand for a day",
     "ReactionSounds": ["Humming.mp3"],
     "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
@@ -67,7 +67,7 @@
     "Sprite": "liangxiu.png",
     "Size": [250,375] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
+    "Solution": "watch the night sky for 15 minutes",
     "ReactionSounds": ["Humming.mp3"],
     "DeathQuote": "(You thought you heard a quiet droning sound.)"
   },
@@ -76,7 +76,7 @@
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
+    "Solution": "breathe loudly for three minutes",
     "ReactionSounds": ["Breathing.mp3"],
     "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
@@ -85,7 +85,7 @@
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Docile",
-    "Solution": "hit it with a broom five times.",
+    "Solution": "stare at every box in my attic",
     "ReactionSounds": ["Breathing.mp3"],
     "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
@@ -94,7 +94,7 @@
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Silent",
-    "Solution": "switch to channel three on a television.",
+    "Solution": "sleep on the attic floor",
     "ReactionSounds": ["Breathing.mp3"],
     "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
@@ -103,7 +103,7 @@
     "Sprite": "the spreachure.png",
     "Size": [325,325] ,
     "Behavior": "Stubborn",
-    "Solution": "play clock ticking sounds for six hours.",
+    "Solution": "kill a fly and bring it into my attic",
     "ReactionSounds": ["Breathing.mp3"],
     "DeathQuote": "(You thought you heard the sound of crawling.)"
   },
@@ -112,7 +112,7 @@
     "Sprite": "yogurt male.png",
     "Size": [250, 250] ,
     "Behavior": "Aggressive",
-    "Solution": "run a bathtub for twelve hours",
+    "Solution": "lie flat on the floor for two minutes",
     "ReactionSounds": ["Sloshing.mp3"],
     "DeathQuote": "(You thought you heard the sound of running water.)"
   },
